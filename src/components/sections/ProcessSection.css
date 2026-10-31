@@ -1,0 +1,116 @@
+.process-section {
+  position: relative;
+  background-color: var(--bg-primary);
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  position: relative;
+}
+
+@media (min-width: 640px) {
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .process-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.process-card {
+  padding: 2.5rem 1.75rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: var(--shadow-card);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.process-card:hover {
+  border-color: var(--border-accent);
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-elevated);
+  transform: translateY(-4px);
+}
+
+.process-step-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.process-step-num {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-burnt-orange);
+}
+
+.process-step-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border-medium);
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.process-card:hover .process-step-dot {
+  background: var(--color-burnt-orange);
+}
+
+.process-subtitle {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-warm-ivory);
+  margin-bottom: 0.5rem;
+}
+
+.process-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.process-description {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.process-activities {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.process-activity-item {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.process-activity-bullet {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--color-burnt-orange);
+}

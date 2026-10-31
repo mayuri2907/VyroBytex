@@ -1,0 +1,85 @@
+:root {
+  /* Brand Core Colors */
+  --color-black: #101010;
+  --color-black-deep: #161616;
+  --color-burnt-orange: #D53607;
+  --color-burnt-orange-hover: #E84214;
+  --color-warm-ivory: #E6D5BD;
+  --color-warm-ivory-muted: #D9C7AC;
+  --color-white: #FFFFFF;
+  --color-off-white: #F7F5F0;
+
+  /* Surfaces - Light Theme */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F7F5F0;
+  --bg-surface: #FFFFFF;
+  --bg-surface-elevated: #F7F5F0;
+  --bg-surface-glass: rgba(255, 255, 255, 0.88);
+  --bg-warm-section: #F7F5F0;
+  --bg-dark-contrast: #101010;
+
+  /* Text Colors - High Contrast */
+  --text-primary: #101010;
+  --text-secondary: #4A4640;
+  --text-muted: #7A746B;
+  --text-dim: #A8A297;
+  --text-inverse: #FFFFFF;
+  --text-orange: #D53607;
+
+  /* Borders & Dividers */
+  --border-subtle: rgba(16, 16, 16, 0.08);
+  --border-medium: rgba(16, 16, 16, 0.16);
+  --border-strong: rgba(16, 16, 16, 0.30);
+  --border-accent: rgba(213, 54, 7, 0.50);
+  --border-accent-solid: #D53607;
+
+  /* Accents, Glows & Shadows */
+  --glow-orange: 0 0 35px rgba(213, 54, 7, 0.22);
+  --glow-orange-subtle: 0 0 15px rgba(213, 54, 7, 0.14);
+  --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.05);
+  --shadow-elevated: 0 18px 45px rgba(0, 0, 0, 0.09);
+  --shadow-float: 0 12px 36px rgba(0, 0, 0, 0.12);
+
+  /* Typography */
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Spacing System */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4.5rem;
+  --space-4xl: 6rem;
+  --space-5xl: 8rem;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 450ms;
+  --duration-deliberate: 700ms;
+
+  /* Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  /* Z-Index Hierarchy */
+  --z-background: 0;
+  --z-content: 10;
+  --z-floating-social: 95;
+  --z-header: 100;
+  --z-floating-preview: 150;
+  --z-drawer: 200;
+  --z-modal: 500;
+  --z-cursor: 9999;
+}

@@ -1,0 +1,147 @@
+.contact-page-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+}
+
+@media (min-width: 992px) {
+  .contact-page-grid {
+    grid-template-columns: 1fr 1.25fr;
+    gap: 4.5rem;
+  }
+}
+
+.contact-info-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact-method-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.contact-method-card:hover {
+  border-color: var(--border-medium);
+  transform: translateY(-2px);
+}
+
+.contact-method-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: rgba(213, 54, 7, 0.12);
+  border: 1px solid rgba(213, 54, 7, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-burnt-orange);
+}
+
+.contact-form-container {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: clamp(2rem, 5vw, 3.5rem);
+  box-shadow: var(--shadow-card);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  background: #FFFFFF;
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  padding: 0.875rem 1.125rem;
+  font-size: 1rem; /* 16px prevents iOS Safari auto-zoom on input focus */
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--color-burnt-orange);
+  box-shadow: 0 0 0 3px rgba(213, 54, 7, 0.18);
+}
+
+.form-select {
+  cursor: pointer;
+}
+
+.form-select option {
+  background: #FFFFFF;
+  color: #101010;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.faq-item {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+
+.faq-question {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.faq-answer {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}

@@ -1,0 +1,96 @@
+.work-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 3.5rem;
+}
+
+.work-filter-btn {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.5rem 1.125rem;
+  border-radius: var(--radius-full);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-medium);
+  color: var(--text-primary);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.work-filter-btn:hover {
+  color: var(--color-burnt-orange);
+  border-color: var(--color-burnt-orange);
+}
+
+.work-filter-btn.active {
+  background: var(--color-burnt-orange);
+  border-color: var(--color-burnt-orange);
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.work-disclaimer-box {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.75rem;
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.work-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+}
+
+.work-card-expanded {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr;
+  transition: border-color var(--duration-normal) var(--ease-out),
+              box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.work-card-expanded:hover {
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-elevated);
+}
+
+@media (min-width: 1024px) {
+  .work-card-expanded {
+    grid-template-columns: 1.2fr 1fr;
+  }
+}
+
+.work-card-img-wrap {
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  min-height: 340px;
+}
+
+.work-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-deliberate) var(--ease-out);
+}
+
+.work-card-expanded:hover .work-card-img {
+  transform: scale(1.03);
+}
+
+.work-card-body {
+  padding: clamp(2rem, 4vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

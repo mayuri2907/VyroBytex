@@ -1,0 +1,93 @@
+.services-page-hero {
+  padding-top: clamp(7.5rem, 14vw, 11rem);
+  padding-bottom: clamp(3rem, 6vw, 4.5rem);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.service-detail-card {
+  padding: clamp(2.5rem, 5vw, 4.5rem);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--duration-normal) var(--ease-out),
+              box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.service-detail-card:hover {
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-elevated);
+}
+
+@media (min-width: 992px) {
+  .service-detail-card {
+    grid-template-columns: 1.25fr 1fr;
+    gap: 4rem;
+  }
+}
+
+.service-detail-num {
+  font-family: var(--font-mono);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-burnt-orange);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+}
+
+.service-detail-title {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+}
+
+.service-detail-desc {
+  font-size: 1.0625rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.service-feature-block {
+  margin-top: 1.5rem;
+}
+
+.service-feature-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-burnt-orange);
+  margin-bottom: 1rem;
+}
+
+.service-capabilities-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.service-cap-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+}
+
+.service-deliverables-box {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
