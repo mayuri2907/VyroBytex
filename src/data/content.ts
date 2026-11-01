@@ -4,6 +4,7 @@ import type {
   ProcessStep,
   Differentiator,
   WorkingPrinciple,
+  TeamMember,
 } from '../types';
 
 export const BRAND = {
@@ -39,7 +40,7 @@ export const SERVICES: ServiceItem[] = [
     number: '01',
     title: 'Website Development',
     shortDescription:
-      'High-performance business, portfolio, and marketing websites engineered with modern art direction, responsive layouts, and conversion-focused architecture.',
+      'Custom websites designed to present your business professionally and help customers find the information they need.',
     fullDescription:
       'We craft tailored digital web experiences from the ground up. Combining contemporary art direction, lightning-fast performance, and accessible code, every build is tailored to your business model and target audience.',
     offerings: [
@@ -82,7 +83,7 @@ export const SERVICES: ServiceItem[] = [
     number: '02',
     title: 'E-commerce Solutions',
     shortDescription:
-      'Seamless digital shopping platforms built for frictionless customer journeys, conversion rate optimization, and scalable store operations.',
+      'Online storefronts and product experiences tailored to your business requirements.',
     fullDescription:
       'From custom digital storefronts to headless architectures, we build store experiences that turn casual browsers into loyal customers. Engineered for speed, intuitive navigation, and reliable checkouts.',
     offerings: [
@@ -124,7 +125,7 @@ export const SERVICES: ServiceItem[] = [
     number: '03',
     title: 'Software Development',
     shortDescription:
-      'Reliable web applications, internal operational tools, and customer portals built with robust full-stack architecture.',
+      'Custom applications and business tools designed around specific workflows and operational needs.',
     fullDescription:
       'When off-the-shelf tools fall short, we build custom software that solves your exact workflow challenges. Scalable APIs, intuitive user interfaces, and secure data handling engineered for longevity.',
     offerings: [
@@ -166,7 +167,7 @@ export const SERVICES: ServiceItem[] = [
     number: '04',
     title: 'AI Solutions',
     shortDescription:
-      'Practical AI implementations, automated workflows, and intelligent conversational tools that enhance customer engagement and team productivity.',
+      'Practical AI-powered features and integrations designed to support useful business workflows.',
     fullDescription:
       'We help businesses leverage artificial intelligence practically and responsibly. From intelligent assistants grounded in your private business documents to automated workflow pipelines and smart application features.',
     offerings: [
@@ -471,3 +472,46 @@ export const PROCESS_STEPS: ProcessStep[] = [
     ],
   },
 ];
+
+export const TEAM_SECTION_CONTENT = {
+  heading: 'Meet the People Behind Vyrobytex.',
+  supportingText:
+    'Different strengths. One shared goal. Building digital experiences that move businesses forward.',
+} as const;
+
+export const TEAM_MEMBERS: TeamMember[] = [
+  {
+    id: 'navin-chaudhary',
+    number: '01',
+    name: 'NAVIN CHAUDHARY',
+    role: 'Founder',
+    image: '/images/team/navin-placeholder.svg',
+    alt: 'Temporary portrait placeholder for Navin Chaudhary',
+    isFounder: true,
+  },
+  {
+    id: 'brijesh-chaudhary',
+    number: '02',
+    name: 'BRIJESH CHAUDHARY',
+    role: 'Team Member',
+    image: '/images/team/brijesh-placeholder.svg',
+    alt: 'Temporary portrait placeholder for Brijesh Chaudhary',
+  },
+  {
+    id: 'man-chaudhary',
+    number: '03',
+    name: 'MAN CHAUDHARY',
+    role: 'Frontend Development & Marketing',
+    image: '/images/team/man-placeholder.svg',
+    alt: 'Temporary portrait placeholder for Man Chaudhary',
+  },
+  {
+    id: 'dixit-patel',
+    number: '04',
+    name: 'DIXIT PATEL',
+    role: 'Sales & Customer Management',
+    image: '/images/team/dixit-placeholder.svg',
+    alt: 'Temporary portrait placeholder for Dixit Patel',
+  },
+];
+

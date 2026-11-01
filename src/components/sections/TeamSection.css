@@ -1,0 +1,206 @@
+/* ==========================================================================
+   VYROBYTEX — TEAM SECTION STYLING
+   Editorial Agency Team Showcase
+   ========================================================================== */
+
+.team-section {
+  position: relative;
+  background-color: var(--bg-primary);
+  overflow: hidden;
+}
+
+.team-section.compact {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.team-header-wrap {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+/* Grid Layout */
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+@media (min-width: 640px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .team-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Team Card */
+.team-card {
+  position: relative;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--duration-normal) var(--ease-out),
+              border-color var(--duration-normal) var(--ease-out),
+              box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.team-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-elevated);
+}
+
+.team-card.is-founder {
+  border-color: rgba(213, 54, 7, 0.35);
+}
+
+.team-card.is-founder:hover {
+  border-color: var(--color-burnt-orange);
+  box-shadow: 0 14px 40px rgba(213, 54, 7, 0.16);
+}
+
+/* Portrait Wrapper (Consistent 4:5 Aspect Ratio) */
+.team-portrait-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background-color: #0E0E0E;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-deliberate) var(--ease-out);
+}
+
+.team-card:hover .team-portrait-img {
+  transform: scale(1.03);
+}
+
+/* Fallback Portrait if image fails to load */
+.team-portrait-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 40%, rgba(213, 54, 7, 0.15), #121212 70%);
+  color: #FFFFFF;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.team-fallback-initials {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--color-burnt-orange);
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.team-fallback-note {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Founder Badge Overlay */
+.team-badge-pill {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  background: rgba(213, 54, 7, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 12px rgba(213, 54, 7, 0.4);
+}
+
+.team-number-pill {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+  background: rgba(16, 16, 16, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--color-warm-ivory);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Card Body */
+.team-card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  background: var(--bg-surface);
+  flex: 1;
+  justify-content: center;
+}
+
+.team-member-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.team-member-role {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-burnt-orange);
+  line-height: 1.4;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 639px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .team-card-body {
+    padding: 1.25rem;
+  }
+
+  .team-member-name {
+    font-size: 1.125rem;
+  }
+}

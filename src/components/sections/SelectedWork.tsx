@@ -7,26 +7,30 @@ import { SectionHeading } from '../ui/SectionHeading';
 import { Badge } from '../ui/Badge';
 import { Button } from '../ui/Button';
 import { useCursor } from '../../hooks/useCursor';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 import './SelectedWork.css';
 
 export const SelectedWork: React.FC = () => {
   const { setCursorMode, resetCursor } = useCursor();
+  const sectionRef = useScrollReveal();
 
   return (
-    <section className="selected-work-section section-padding" aria-label="Selected Work">
+    <section ref={sectionRef} className="selected-work-section section-padding" aria-label="Selected Work">
       <div className="container">
-        <SectionHeading
-          label="Portfolio"
-          title={
-            <>
-              Selected Work & <br />
-              <span className="outlined-text">Design Explorations.</span>
-            </>
-          }
-          subtitle="Explore high-fidelity concept architectures demonstrating our visual direction, engineering standards, and technical precision."
-        />
+        <div data-gsap="fade-up">
+          <SectionHeading
+            label="Portfolio"
+            title={
+              <>
+                Selected Work & <br />
+                <span className="outlined-text">Design Explorations.</span>
+              </>
+            }
+            subtitle="Explore high-fidelity concept architectures demonstrating our visual direction, engineering standards, and technical precision."
+          />
+        </div>
 
-        <div className="projects-grid">
+        <div className="projects-grid" data-gsap-stagger="project-card">
           {PROJECTS.map((project, idx) => {
             const isReverse = idx % 2 === 1;
             const detailRoute = getProjectDetailRoute(project.id);
@@ -103,7 +107,7 @@ export const SelectedWork: React.FC = () => {
         </div>
 
         {/* Explore All Projects Button */}
-        <div style={{ marginTop: '4.5rem', display: 'flex', justifyContent: 'center' }}>
+        <div data-gsap="fade-up" style={{ marginTop: '4.5rem', display: 'flex', justifyContent: 'center' }}>
           <Button
             to={ROUTES.WORK}
             variant="secondary"

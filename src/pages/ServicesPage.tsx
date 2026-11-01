@@ -6,6 +6,7 @@ import { Button } from '../components/ui/Button';
 import { Badge } from '../components/ui/Badge';
 import { ContactCTA } from '../components/sections/ContactCTA';
 import { usePageSEO } from '../hooks/usePageSEO';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 import './ServicesPage.css';
 
 export const ServicesPage: React.FC = () => {
@@ -14,39 +15,45 @@ export const ServicesPage: React.FC = () => {
     description:
       'Explore Vyrobytex digital solutions: Website Development, E-commerce Solutions, Custom Software Development, and Practical AI Integrations.',
   });
+
+  const heroRef = useScrollReveal({ yOffset: 20 });
+  const listRef = useScrollReveal();
+
   return (
     <div className="services-page">
       {/* Header / Hero */}
-      <section className="services-page-hero">
+      <section ref={heroRef} className="services-page-hero">
         <div className="container">
-          <Badge variant="concept" className="mb-4">
-            Services & Capabilities
-          </Badge>
+          <div data-gsap="fade-up">
+            <Badge variant="concept" className="mb-4">
+              Services & Capabilities
+            </Badge>
 
-          <h1 className="page-hero-title">
-            Digital Solutions. <br />
-            <span className="outlined-text">Engineered With Precision.</span>
-          </h1>
+            <h1 className="page-hero-title">
+              Digital Solutions. <br />
+              <span className="outlined-text">Engineered With Precision.</span>
+            </h1>
 
-          <p
-            style={{
-              fontSize: 'clamp(1.125rem, 1.6vw, 1.375rem)',
-              color: 'var(--text-secondary)',
-              maxWidth: 820,
-              lineHeight: 1.65,
-            }}
-          >
-            We build custom websites, e-commerce architectures, bespoke software, and AI integrations
-            that solve real operational problems and help businesses connect with their customers.
-          </p>
+            <p
+              style={{
+                fontSize: 'clamp(1.125rem, 1.6vw, 1.375rem)',
+                color: 'var(--text-secondary)',
+                maxWidth: 820,
+                lineHeight: 1.65,
+              }}
+            >
+              We build custom websites, e-commerce architectures, bespoke software, and AI integrations
+              that solve real operational problems and help businesses connect with their customers.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Services List Deep-dive */}
-      <section className="section-padding">
-        <div className="container">
+      <section ref={listRef} className="section-padding">
+        <div className="container" data-gsap-stagger=".service-detail-card">
           {SERVICES.map((service) => (
-            <div key={service.id} className="service-detail-card" id={service.id}>
+            <div key={service.id} className="service-detail-card" id={service.id} data-gsap="fade-up">
               {/* Left Column: Scope, Problems Solved, Who Benefits */}
               <div>
                 <span className="service-detail-num">{service.number} // {service.tag}</span>

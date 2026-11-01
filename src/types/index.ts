@@ -52,3 +52,14 @@ export interface WorkingPrinciple {
   title: string;
   description: string;
 }
+
+export interface TeamMember {
+  id: string;
+  number: string;
+  name: string;
+  role: string;
+  image: string;
+  alt: string;
+  isFounder?: boolean;
+}
+

@@ -5,17 +5,19 @@ import { BRAND } from '../../data/content';
 import { Button } from '../ui/Button';
 import { Badge } from '../ui/Badge';
 import { useCursor } from '../../hooks/useCursor';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 import './HeroSection.css';
 
 export const HeroSection: React.FC = () => {
   const { setCursorMode, resetCursor } = useCursor();
+  const heroRef = useScrollReveal({ yOffset: 20, duration: 0.7 });
 
   return (
-    <section className="hero-section" aria-label="Hero Introduction">
+    <section ref={heroRef} className="hero-section" aria-label="Hero Introduction">
       <div className="container">
         <div className="hero-content">
           {/* Status & Founder Metadata */}
-          <div className="hero-meta-row">
+          <div className="hero-meta-row" data-gsap="fade-up">
             <Badge variant="concept">
               <span className="pulse-dot" style={{ width: 6, height: 6 }} />
               {BRAND.availability}
@@ -27,7 +29,7 @@ export const HeroSection: React.FC = () => {
           </div>
 
           {/* Bold Editorial Headline inspired by reference */}
-          <h1 className="hero-headline">
+          <h1 className="hero-headline" data-gsap="fade-up">
             Digital Experiences.
             <br />
             Built to Move{' '}
@@ -37,12 +39,12 @@ export const HeroSection: React.FC = () => {
           </h1>
 
           {/* Supporting Copy */}
-          <p className="hero-subheadline">
+          <p className="hero-subheadline" data-gsap="fade-up">
             {BRAND.subheadline}
           </p>
 
           {/* Action CTAs */}
-          <div className="hero-actions-row">
+          <div className="hero-actions-row" data-gsap="fade-up">
             <Button
               to={ROUTES.WORK}
               variant="primary"
@@ -63,7 +65,7 @@ export const HeroSection: React.FC = () => {
           </div>
 
           {/* Capabilities Pill Strip */}
-          <div className="hero-pills-row">
+          <div className="hero-pills-row" data-gsap="fade-up">
             <span className="hero-pill-label">Capabilities</span>
             <span
               className="hero-pill-item"
@@ -103,7 +105,7 @@ export const HeroSection: React.FC = () => {
           </div>
 
           {/* Credible Editorial Value Ribbon (No fake counters or fabricated stats) */}
-          <div className="hero-metrics-strip">
+          <div className="hero-metrics-strip" data-gsap-stagger="metrics">
             <div className="hero-metric-item">
               <div className="hero-metric-title">Bespoke Architecture</div>
               <div className="hero-metric-label">Custom engineering without generic templates</div>

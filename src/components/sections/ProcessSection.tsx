@@ -2,26 +2,30 @@ import React from 'react';
 import { PROCESS_STEPS } from '../../data/content';
 import { SectionHeading } from '../ui/SectionHeading';
 import { useCursor } from '../../hooks/useCursor';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 import './ProcessSection.css';
 
 export const ProcessSection: React.FC = () => {
   const { setCursorMode, resetCursor } = useCursor();
+  const sectionRef = useScrollReveal();
 
   return (
-    <section className="process-section section-padding" aria-label="Development Process">
+    <section ref={sectionRef} className="process-section section-padding" aria-label="Development Process">
       <div className="container">
-        <SectionHeading
-          label="Our Process"
-          title={
-            <>
-              Structured Execution. <br />
-              <span className="outlined-text">Predictable Outcomes.</span>
-            </>
-          }
-          subtitle="Every project moves through a disciplined four-phase delivery cycle to ensure visual excellence and on-time execution."
-        />
+        <div data-gsap="fade-up">
+          <SectionHeading
+            label="Our Process"
+            title={
+              <>
+                Structured Execution. <br />
+                <span className="outlined-text">Predictable Outcomes.</span>
+              </>
+            }
+            subtitle="Every project moves through a disciplined four-phase delivery cycle to ensure visual excellence and on-time execution."
+          />
+        </div>
 
-        <div className="process-grid">
+        <div className="process-grid" data-gsap-stagger="process-card">
           {PROCESS_STEPS.map((step) => (
             <div
               key={step.step}

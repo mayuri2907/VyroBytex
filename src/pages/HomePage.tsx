@@ -4,6 +4,7 @@ import { ServicesInteractive } from '../components/sections/ServicesInteractive'
 import { SelectedWork } from '../components/sections/SelectedWork';
 import { Differentiators } from '../components/sections/Differentiators';
 import { ProcessSection } from '../components/sections/ProcessSection';
+import { TeamSection } from '../components/sections/TeamSection';
 import { ContactCTA } from '../components/sections/ContactCTA';
 import { usePageSEO } from '../hooks/usePageSEO';
 
@@ -21,6 +22,7 @@ export const HomePage: React.FC = () => {
       <SelectedWork />
       <Differentiators />
       <ProcessSection />
+      <TeamSection variant="compact" />
       <ContactCTA />
     </>
   );

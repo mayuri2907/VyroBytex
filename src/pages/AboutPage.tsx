@@ -5,8 +5,10 @@ import { ROUTES } from '../lib/routes';
 import { Badge } from '../components/ui/Badge';
 import { Button } from '../components/ui/Button';
 import { SectionHeading } from '../components/ui/SectionHeading';
+import { TeamSection } from '../components/sections/TeamSection';
 import { ContactCTA } from '../components/sections/ContactCTA';
 import { usePageSEO } from '../hooks/usePageSEO';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 import './AboutPage.css';
 
 export const AboutPage: React.FC = () => {
@@ -15,40 +17,48 @@ export const AboutPage: React.FC = () => {
     description:
       'Learn about Vyrobytex, founder Navin Chaudhary, our 5 operating principles, and our disciplined digital delivery process.',
   });
+
+  const heroRef = useScrollReveal({ yOffset: 20 });
+  const storyRef = useScrollReveal();
+  const principlesRef = useScrollReveal();
+  const processRef = useScrollReveal();
+
   return (
     <div className="about-page">
       {/* Hero */}
-      <section className="services-page-hero">
+      <section ref={heroRef} className="services-page-hero">
         <div className="container">
-          <Badge variant="concept" className="mb-4">
-            About Vyrobytex
-          </Badge>
+          <div data-gsap="fade-up">
+            <Badge variant="concept" className="mb-4">
+              About Vyrobytex
+            </Badge>
 
-          <h1 className="page-hero-title">
-            Digital Experiences. <br />
-            <span className="outlined-text">Grounded in Business Reality.</span>
-          </h1>
+            <h1 className="page-hero-title">
+              Digital Experiences. <br />
+              <span className="outlined-text">Grounded in Business Reality.</span>
+            </h1>
 
-          <p
-            style={{
-              fontSize: 'clamp(1.125rem, 1.6vw, 1.375rem)',
-              color: 'var(--text-secondary)',
-              maxWidth: 780,
-              lineHeight: 1.65,
-            }}
-          >
-            Vyrobytex is an independent digital solutions company focused on building custom
-            websites, bespoke software, e-commerce platforms, and practical AI integrations that
-            deliver genuine commercial value.
-          </p>
+            <p
+              style={{
+                fontSize: 'clamp(1.125rem, 1.6vw, 1.375rem)',
+                color: 'var(--text-secondary)',
+                maxWidth: 780,
+                lineHeight: 1.65,
+              }}
+            >
+              Vyrobytex is an independent digital solutions company focused on building custom
+              websites, bespoke software, e-commerce platforms, and practical AI integrations that
+              deliver genuine commercial value.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Brand Introduction & Founder Profile */}
-      <section className="section-padding">
+      <section ref={storyRef} className="section-padding">
         <div className="container">
           <div className="about-story-grid">
-            <div>
+            <div data-gsap="fade-up">
               <SectionHeading
                 label="Company & Leadership"
                 title={
@@ -106,6 +116,7 @@ export const AboutPage: React.FC = () => {
 
             {/* Approach Card */}
             <div
+              data-gsap="fade-up"
               style={{
                 background: 'var(--bg-surface)',
                 border: '1px solid var(--border-subtle)',
@@ -192,21 +203,26 @@ export const AboutPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Section C: Working Principles (Directly from Prompt 2) */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--bg-secondary)', borderTop: '1px solid var(--border-subtle)' }}>
-        <div className="container">
-          <SectionHeading
-            label="Working Principles"
-            title={
-              <>
-                The Standards We Uphold. <br />
-                <span className="outlined-text">Every Single Project.</span>
-              </>
-            }
-            subtitle="Our 5 core operating principles that guide our technical architecture, design choices, and client relationships."
-          />
+      {/* Section B.5: The Vyrobytex Team */}
+      <TeamSection variant="full" id="team" />
 
-          <div className="values-grid">
+      {/* Section C: Working Principles (Directly from Prompt 2) */}
+      <section ref={principlesRef} className="section-padding" style={{ backgroundColor: 'var(--bg-secondary)', borderTop: '1px solid var(--border-subtle)' }}>
+        <div className="container">
+          <div data-gsap="fade-up">
+            <SectionHeading
+              label="Working Principles"
+              title={
+                <>
+                  The Standards We Uphold. <br />
+                  <span className="outlined-text">Every Single Project.</span>
+                </>
+              }
+              subtitle="Our 5 core operating principles that guide our technical architecture, design choices, and client relationships."
+            />
+          </div>
+
+          <div className="values-grid" data-gsap-stagger="value-card">
             {WORKING_PRINCIPLES.map((principle) => (
               <div key={principle.number} className="value-card">
                 <span className="value-card-num">{principle.number}</span>
@@ -219,20 +235,22 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* Section D: Work Process Timeline */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--bg-primary)', borderTop: '1px solid var(--border-subtle)' }}>
+      <section ref={processRef} className="section-padding" style={{ backgroundColor: 'var(--bg-primary)', borderTop: '1px solid var(--border-subtle)' }}>
         <div className="container">
-          <SectionHeading
-            label="Work Process"
-            title={
-              <>
-                From Initial Idea <br />
-                <span className="outlined-text">To Production Launch.</span>
-              </>
-            }
-            subtitle="How projects move systematically from initial conversation through design, development, testing, and deployment."
-          />
+          <div data-gsap="fade-up">
+            <SectionHeading
+              label="Work Process"
+              title={
+                <>
+                  From Initial Idea <br />
+                  <span className="outlined-text">To Production Launch.</span>
+                </>
+              }
+              subtitle="How projects move systematically from initial conversation through design, development, testing, and deployment."
+            />
+          </div>
 
-          <div className="process-grid">
+          <div className="process-grid" data-gsap-stagger="process-card">
             {PROCESS_STEPS.map((step) => (
               <div key={step.step} className="process-card">
                 <div className="process-step-indicator">

@@ -5,6 +5,7 @@ import { Badge } from '../components/ui/Badge';
 import { Button } from '../components/ui/Button';
 import { useCursor } from '../hooks/useCursor';
 import { usePageSEO } from '../hooks/usePageSEO';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 import './ContactPage.css';
 
 const InstagramIcon: React.FC<{ size?: number }> = ({ size = 22 }) => (
@@ -31,6 +32,9 @@ export const ContactPage: React.FC = () => {
       'Start a project conversation with Vyrobytex. Reach founder Navin Chaudhary directly via WhatsApp (+91 81609 59830), phone, or email.',
   });
   const { setCursorMode, resetCursor } = useCursor();
+
+  const heroRef = useScrollReveal({ yOffset: 20 });
+  const mainRef = useScrollReveal();
 
   const [formData, setFormData] = useState({
     name: '',
@@ -95,39 +99,41 @@ export const ContactPage: React.FC = () => {
   return (
     <div className="contact-page">
       {/* Hero with Exact Required Copy */}
-      <section className="services-page-hero">
+      <section ref={heroRef} className="services-page-hero">
         <div className="container">
-          <Badge variant="concept" className="mb-4">
-            Contact & Enquiries
-          </Badge>
+          <div data-gsap="fade-up">
+            <Badge variant="concept" className="mb-4">
+              Contact & Enquiries
+            </Badge>
 
-          {/* Heading from Prompt 2 */}
-          <h1 className="page-hero-title">
-            Let's Talk About <br />
-            <span className="outlined-text">Your Project.</span>
-          </h1>
+            {/* Heading from Prompt 2 */}
+            <h1 className="page-hero-title">
+              Let's Talk About <br />
+              <span className="outlined-text">Your Project.</span>
+            </h1>
 
-          {/* Supporting text from Prompt 2 */}
-          <p
-            style={{
-              fontSize: 'clamp(1.125rem, 1.6vw, 1.375rem)',
-              color: 'var(--text-secondary)',
-              maxWidth: 780,
-              lineHeight: 1.65,
-            }}
-          >
-            Tell us what you're building, what your business needs, or which problem you'd like to solve.
-            You will hear directly from founder Navin Chaudhary.
-          </p>
+            {/* Supporting text from Prompt 2 */}
+            <p
+              style={{
+                fontSize: 'clamp(1.125rem, 1.6vw, 1.375rem)',
+                color: 'var(--text-secondary)',
+                maxWidth: 780,
+                lineHeight: 1.65,
+              }}
+            >
+              Tell us what you're building, what your business needs, or which problem you'd like to solve.
+              You will hear directly from founder Navin Chaudhary.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Main Content Grid */}
-      <section className="section-padding">
+      <section ref={mainRef} className="section-padding">
         <div className="container">
           <div className="contact-page-grid">
             {/* Left Column: Direct Official Contact Actions */}
-            <div className="contact-info-panel">
+            <div className="contact-info-panel" data-gsap="fade-up">
               <div>
                 <h2
                   style={{
@@ -264,7 +270,7 @@ export const ContactPage: React.FC = () => {
             </div>
 
             {/* Right Column: Project Discovery Form Interface */}
-            <div className="contact-form-container">
+            <div className="contact-form-container" data-gsap="fade-up">
               <div style={{ marginBottom: '1.75rem' }}>
                 <span
                   style={{

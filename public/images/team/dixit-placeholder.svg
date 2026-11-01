@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 600" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bgGlowDixit" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#E6D5BD" stop-opacity="0.2" />
+      <stop offset="60%" stop-color="#141414" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0D0D0D" stop-opacity="1" />
+    </radialGradient>
+    <linearGradient id="frameGradDixit" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E6D5BD" />
+      <stop offset="100%" stop-color="#D53607" />
+    </linearGradient>
+    <pattern id="gridDixit" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1" />
+    </pattern>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="480" height="600" fill="#0D0D0D" />
+  <rect width="480" height="600" fill="url(#bgGlowDixit)" />
+  <rect width="480" height="600" fill="url(#gridDixit)" />
+
+  <!-- Editorial Geometric Border -->
+  <rect x="20" y="20" width="440" height="560" fill="none" stroke="url(#frameGradDixit)" stroke-width="1.5" stroke-dasharray="440 20" opacity="0.6" />
+
+  <!-- Corner Tech Markings -->
+  <path d="M 20 40 L 40 40 M 40 20 L 40 40" stroke="#E6D5BD" stroke-width="2" fill="none" />
+  <path d="M 460 40 L 440 40 M 440 20 L 440 40" stroke="#E6D5BD" stroke-width="2" fill="none" />
+  <path d="M 20 560 L 40 560 M 40 580 L 40 560" stroke="#E6D5BD" stroke-width="2" fill="none" />
+  <path d="M 460 560 L 440 560 M 440 580 L 440 560" stroke="#E6D5BD" stroke-width="2" fill="none" />
+
+  <!-- Top Metadata -->
+  <text x="44" y="56" fill="#E6D5BD" font-family="'Syne', 'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" letter-spacing="3">04 // SALES &amp; CUSTOMER</text>
+  <circle cx="436" cy="52" r="4" fill="#E6D5BD" />
+
+  <!-- Central Editorial Abstract Portrait Avatar -->
+  <g transform="translate(240, 260)">
+    <!-- Halo ring -->
+    <circle cx="0" cy="0" r="110" fill="none" stroke="rgba(230, 213, 189, 0.35)" stroke-width="1" stroke-dasharray="6 6" />
+    <circle cx="0" cy="0" r="92" fill="#181818" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1.5" />
+    
+    <!-- Stylized Head & Shoulders Silhouette -->
+    <path d="M -45 55 C -45 20, -28 5, 0 5 C 28 5, 45 20, 45 55 Z" fill="#2E2E2E" stroke="#E6D5BD" stroke-width="1" />
+    <circle cx="0" cy="-25" r="32" fill="#F7F5F0" />
+    
+    <!-- Bold Initial Monogram Overlay -->
+    <text x="0" y="5" fill="#101010" font-family="'Syne', 'Plus Jakarta Sans', sans-serif" font-size="34" font-weight="800" text-anchor="middle" letter-spacing="1">DP</text>
+  </g>
+
+  <!-- Bottom Framing Details -->
+  <line x1="44" y1="480" x2="436" y2="480" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
+  
+  <text x="240" y="515" fill="#FFFFFF" font-family="'Syne', 'Plus Jakarta Sans', sans-serif" font-size="20" font-weight="800" text-anchor="middle" letter-spacing="1.5">DIXIT PATEL</text>
+  <text x="240" y="538" fill="#E6D5BD" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="2">SALES &amp; CUSTOMER MGMT</text>
+  <text x="240" y="562" fill="#7A746B" font-family="monospace" font-size="9.5" text-anchor="middle" letter-spacing="1.5">TEMPORARY PORTRAIT PLACEHOLDER</text>
+</svg>

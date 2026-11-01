@@ -4,14 +4,17 @@ import { ROUTES } from '../../lib/routes';
 import { BRAND } from '../../data/content';
 import { Button } from '../ui/Button';
 import { Badge } from '../ui/Badge';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 import './ContactCTA.css';
 
 export const ContactCTA: React.FC = () => {
+  const sectionRef = useScrollReveal();
+
   return (
-    <section className="contact-cta-section" aria-label="Start a Project">
+    <section ref={sectionRef} className="contact-cta-section" aria-label="Start a Project">
       <div className="container">
         <div className="contact-cta-banner">
-          <div className="contact-cta-content">
+          <div className="contact-cta-content" data-gsap="fade-up">
             <div className="contact-cta-badge-wrap">
               <Badge variant="concept">
                 <span className="pulse-dot" style={{ width: 6, height: 6 }} />

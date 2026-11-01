@@ -8,6 +8,7 @@ import { Badge } from '../components/ui/Badge';
 import { ContactCTA } from '../components/sections/ContactCTA';
 import { useCursor } from '../hooks/useCursor';
 import { usePageSEO } from '../hooks/usePageSEO';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 import './WorkPage.css';
 
 type FilterCategory = 'All' | 'E-commerce' | 'Software Development' | 'AI Solutions';
@@ -21,6 +22,9 @@ export const WorkPage: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<FilterCategory>('All');
   const { setCursorMode, resetCursor } = useCursor();
 
+  const heroRef = useScrollReveal({ yOffset: 20 });
+  const gridSectionRef = useScrollReveal();
+
   const filteredProjects =
     activeCategory === 'All'
       ? PROJECTS
@@ -29,37 +33,39 @@ export const WorkPage: React.FC = () => {
   return (
     <div className="work-page">
       {/* Header */}
-      <section className="services-page-hero">
+      <section ref={heroRef} className="services-page-hero">
         <div className="container">
-          <Badge variant="concept" className="mb-4">
-            Selected Work & Concept Showcases
-          </Badge>
+          <div data-gsap="fade-up">
+            <Badge variant="concept" className="mb-4">
+              Selected Work & Concept Showcases
+            </Badge>
 
-          <h1 className="page-hero-title">
-            Digital Craftsmanship. <br />
-            <span className="outlined-text">Tested in Production.</span>
-          </h1>
+            <h1 className="page-hero-title">
+              Digital Craftsmanship. <br />
+              <span className="outlined-text">Tested in Production.</span>
+            </h1>
 
-          <p
-            style={{
-              fontSize: 'clamp(1.125rem, 1.6vw, 1.375rem)',
-              color: 'var(--text-secondary)',
-              maxWidth: 780,
-              lineHeight: 1.65,
-            }}
-          >
-            Explore our curated digital projects and high-fidelity concept architectures. Each build
-            demonstrates our standard for visual art direction, micro-interactions, responsive
-            layouts, and clean engineering.
-          </p>
+            <p
+              style={{
+                fontSize: 'clamp(1.125rem, 1.6vw, 1.375rem)',
+                color: 'var(--text-secondary)',
+                maxWidth: 780,
+                lineHeight: 1.65,
+              }}
+            >
+              Explore our curated digital projects and high-fidelity concept architectures. Each build
+              demonstrates our standard for visual art direction, micro-interactions, responsive
+              layouts, and clean engineering.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Main Portfolio Grid */}
-      <section className="section-padding">
+      <section ref={gridSectionRef} className="section-padding">
         <div className="container">
           {/* Integrity Note */}
-          <div className="work-disclaimer-box">
+          <div className="work-disclaimer-box" data-gsap="fade-up">
             <ShieldCheck size={20} color="var(--color-burnt-orange)" style={{ flexShrink: 0 }} />
             <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', margin: 0 }}>
               <strong style={{ color: 'var(--color-warm-ivory)' }}>Honest Portfolio Standard:</strong>{' '}
@@ -90,7 +96,7 @@ export const WorkPage: React.FC = () => {
           </div>
 
           {/* Projects Display */}
-          <div className="work-detail-grid">
+          <div className="work-detail-grid" data-gsap-stagger="work-card-expanded">
             {filteredProjects.map((project) => {
               const detailRoute = getProjectDetailRoute(project.id);
 

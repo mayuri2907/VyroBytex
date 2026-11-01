@@ -3,10 +3,12 @@ import { Layers, FileCheck, Eye, ShieldCheck, Sparkles } from 'lucide-react';
 import { DIFFERENTIATORS } from '../../data/content';
 import { SectionHeading } from '../ui/SectionHeading';
 import { useCursor } from '../../hooks/useCursor';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 import './Differentiators.css';
 
 export const Differentiators: React.FC = () => {
   const { setCursorMode, resetCursor } = useCursor();
+  const sectionRef = useScrollReveal();
 
   const getIcon = (iconName: string) => {
     switch (iconName) {
@@ -26,20 +28,22 @@ export const Differentiators: React.FC = () => {
   };
 
   return (
-    <section className="differentiators-section section-padding" aria-label="Why Vyrobytex">
+    <section ref={sectionRef} className="differentiators-section section-padding" aria-label="Why Vyrobytex">
       <div className="container">
-        <SectionHeading
-          label="Why Vyrobytex"
-          title={
-            <>
-              Principled Digital Execution. <br />
-              <span className="outlined-text">Built for Real Businesses.</span>
-            </>
-          }
-          subtitle="We focus on what actually moves your business forward: transparent communication, bespoke design, and reliable technical stewardship."
-        />
+        <div data-gsap="fade-up">
+          <SectionHeading
+            label="Why Vyrobytex"
+            title={
+              <>
+                Principled Digital Execution. <br />
+                <span className="outlined-text">Built for Real Businesses.</span>
+              </>
+            }
+            subtitle="We focus on what actually moves your business forward: transparent communication, bespoke design, and reliable technical stewardship."
+          />
+        </div>
 
-        <div className="diff-grid">
+        <div className="diff-grid" data-gsap-stagger="diff-card">
           {DIFFERENTIATORS.map((diff) => (
             <div
               key={diff.title}
