@@ -24,15 +24,7 @@ export const AboutPage: React.FC = () => {
             About Vyrobytex
           </Badge>
 
-          <h1
-            style={{
-              fontSize: 'clamp(2.75rem, 6.5vw, 5.5rem)',
-              fontWeight: 800,
-              lineHeight: 1.02,
-              letterSpacing: '-0.03em',
-              margin: '1.5rem 0',
-            }}
-          >
+          <h1 className="page-hero-title">
             Digital Experiences. <br />
             <span className="outlined-text">Grounded in Business Reality.</span>
           </h1>

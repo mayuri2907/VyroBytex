@@ -35,13 +35,22 @@
 }
 
 .hero-headline {
-  font-size: clamp(3rem, 7.8vw, 6.25rem);
+  font-size: clamp(2.35rem, 7.5vw, 5.75rem);
   font-weight: 800;
-  line-height: 1.02;
+  line-height: 1.04;
   letter-spacing: -0.035em;
   color: var(--text-primary);
   margin-bottom: 2rem;
   text-wrap: balance;
+  word-break: break-word;
+}
+
+@media (max-width: 480px) {
+  .hero-headline {
+    font-size: clamp(1.85rem, 8.5vw, 2.5rem);
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+  }
 }
 
 .hero-headline-accent {
@@ -65,12 +74,32 @@
   font-weight: 400;
 }
 
+@media (max-width: 480px) {
+  .hero-subheadline {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+}
+
 .hero-actions-row {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 1.25rem;
   margin-bottom: 4rem;
+}
+
+@media (max-width: 480px) {
+  .hero-actions-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.875rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-actions-row > * {
+    width: 100%;
+  }
 }
 
 /* Capability Tag Cloud */
@@ -121,6 +150,15 @@
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-card);
+}
+
+@media (max-width: 480px) {
+  .hero-metrics-strip {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    margin-top: 2.5rem;
+  }
 }
 
 @media (min-width: 768px) {

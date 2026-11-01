@@ -35,15 +35,7 @@ export const WorkPage: React.FC = () => {
             Selected Work & Concept Showcases
           </Badge>
 
-          <h1
-            style={{
-              fontSize: 'clamp(2.75rem, 6.5vw, 5.5rem)',
-              fontWeight: 800,
-              lineHeight: 1.02,
-              letterSpacing: '-0.03em',
-              margin: '1.5rem 0',
-            }}
-          >
+          <h1 className="page-hero-title">
             Digital Craftsmanship. <br />
             <span className="outlined-text">Tested in Production.</span>
           </h1>

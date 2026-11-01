@@ -147,6 +147,12 @@
   transform: translateY(-3.5px) rotate(-45deg);
 }
 
+@media (max-width: 380px) {
+  .brand-link {
+    font-size: 1.1875rem;
+  }
+}
+
 /* Mobile Drawer Overlay */
 .mobile-drawer {
   position: fixed;
@@ -157,10 +163,14 @@
   z-index: var(--z-drawer);
   display: flex;
   flex-direction: column;
-  padding: 6rem 2rem 2.5rem;
+  padding: calc(5.5rem + env(safe-area-inset-top, 0px)) clamp(1.25rem, 5vw, 2rem) calc(2rem + env(safe-area-inset-bottom, 0px));
   opacity: 0;
   pointer-events: none;
   transform: translateY(-8px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  max-height: 100vh;
+  max-height: 100dvh;
   transition: opacity var(--duration-normal) var(--ease-out),
               transform var(--duration-normal) var(--ease-out);
 }
@@ -174,20 +184,21 @@
 .mobile-nav-links {
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
-  margin-bottom: 2.5rem;
+  gap: clamp(1rem, 2.5vh, 1.75rem);
+  margin-bottom: 2rem;
 }
 
 .mobile-nav-link {
   font-family: var(--font-display);
-  font-size: 2.25rem;
+  font-size: clamp(1.625rem, 6vw, 2.25rem);
   font-weight: 700;
   color: var(--text-secondary);
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 1rem;
+  padding-bottom: 0.875rem;
+  min-height: 48px;
 }
 
 .mobile-nav-link:hover,

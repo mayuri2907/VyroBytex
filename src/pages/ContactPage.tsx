@@ -102,15 +102,7 @@ export const ContactPage: React.FC = () => {
           </Badge>
 
           {/* Heading from Prompt 2 */}
-          <h1
-            style={{
-              fontSize: 'clamp(2.75rem, 6.5vw, 5.5rem)',
-              fontWeight: 800,
-              lineHeight: 1.02,
-              letterSpacing: '-0.03em',
-              margin: '1.5rem 0',
-            }}
-          >
+          <h1 className="page-hero-title">
             Let's Talk About <br />
             <span className="outlined-text">Your Project.</span>
           </h1>
@@ -326,8 +318,11 @@ export const ContactPage: React.FC = () => {
                     </label>
                     <input
                       id="name"
+                      name="name"
                       type="text"
                       required
+                      aria-required="true"
+                      autoComplete="name"
                       placeholder="Jane Doe"
                       className="form-input"
                       value={formData.name}
@@ -341,8 +336,11 @@ export const ContactPage: React.FC = () => {
                     </label>
                     <input
                       id="email"
+                      name="email"
                       type="email"
                       required
+                      aria-required="true"
+                      autoComplete="email"
                       placeholder="jane@company.com"
                       className="form-input"
                       value={formData.email}
@@ -358,7 +356,9 @@ export const ContactPage: React.FC = () => {
                     </label>
                     <input
                       id="company"
+                      name="company"
                       type="text"
+                      autoComplete="organization"
                       placeholder="Acme Corp"
                       className="form-input"
                       value={formData.company}
@@ -409,7 +409,9 @@ export const ContactPage: React.FC = () => {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     required
+                    aria-required="true"
                     placeholder="Describe your current project, target features, audience, or problems you are aiming to solve..."
                     className="form-textarea"
                     value={formData.message}

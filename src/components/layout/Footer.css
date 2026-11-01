@@ -7,6 +7,12 @@
   padding-bottom: 2.5rem;
 }
 
+@media (max-width: 640px) {
+  .site-footer {
+    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
 .footer-top-grid {
   display: grid;
   grid-template-columns: 1fr;

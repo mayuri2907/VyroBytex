@@ -40,12 +40,20 @@
 }
 
 .contact-cta-title {
-  font-size: clamp(2.5rem, 6vw, 4.75rem);
+  font-size: clamp(2.35rem, 6vw, 4.75rem);
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.035em;
   color: var(--text-primary);
   margin-bottom: 1.5rem;
+  word-break: break-word;
+}
+
+@media (max-width: 480px) {
+  .contact-cta-title {
+    font-size: clamp(1.85rem, 8vw, 2.5rem);
+    line-height: 1.1;
+  }
 }
 
 .contact-cta-text {
@@ -63,6 +71,18 @@
   justify-content: center;
   gap: 1.25rem;
   margin-bottom: 2rem;
+}
+
+@media (max-width: 480px) {
+  .contact-cta-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.875rem;
+  }
+
+  .contact-cta-actions > * {
+    width: 100%;
+  }
 }
 
 .contact-cta-footer-note {
