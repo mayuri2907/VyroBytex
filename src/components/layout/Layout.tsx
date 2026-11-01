@@ -6,10 +6,12 @@ import { ScrollToTop } from './ScrollToTop';
 import { CustomCursor } from '../cursor/CustomCursor';
 import { InteractiveBackground } from '../background/InteractiveBackground';
 import { FloatingSocialContact } from './FloatingSocialContact';
+import { CinematicIntro } from '../intro/CinematicIntro';
 
 export const Layout: React.FC = () => {
   return (
     <div className="site-wrapper" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', position: 'relative' }}>
+      <CinematicIntro />
       <ScrollToTop />
       <a href="#main-content" className="skip-to-content">
         Skip to main content
