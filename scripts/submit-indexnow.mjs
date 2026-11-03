@@ -6,6 +6,7 @@
 
 const HOST = process.env.INDEXNOW_HOST || 'vyro-bytex.vercel.app';
 const KEY = process.env.INDEXNOW_KEY || '58b1e8e4a44c8a0cfe1600c4adaa19bf';
+const SECRET = process.env.INDEXNOW_SECRET || 'vbx_idx_a9e8f72c3d4b1a5e6f8091247d';
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
 
 const CANONICAL_URLS = [
@@ -19,8 +20,10 @@ const CANONICAL_URLS = [
   `https://${HOST}/contact`,
 ];
 
-// CLI arguments or all canonical URLs
-const customArgs = process.argv.slice(2).filter((arg) => arg.startsWith('http'));
+// Check CLI arguments for specific URLs or --via-api flag
+const args = process.argv.slice(2);
+const viaApi = args.includes('--via-api');
+const customArgs = args.filter((arg) => arg.startsWith('http'));
 const urlsToSubmit = customArgs.length > 0 ? customArgs : CANONICAL_URLS;
 
 const payload = {
@@ -39,17 +42,39 @@ console.log(`URLs (${urlsToSubmit.length}):`);
 urlsToSubmit.forEach((u) => console.log(`  • ${u}`));
 console.log('---------------------------------------------------------');
 
-const endpoints = [
-  'https://api.indexnow.org/IndexNow',
-  'https://www.bing.com/indexnow',
-];
+async function submitViaServerlessApi() {
+  const apiEndpoint = `https://${HOST}/api/indexnow`;
+  console.log(`Submitting authenticated request via Serverless API: ${apiEndpoint} ...`);
+  try {
+    const res = await fetch(apiEndpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Authorization': `Bearer ${SECRET}`,
+      },
+      body: JSON.stringify({ urls: urlsToSubmit }),
+    });
 
-async function submit() {
+    const data = await res.json();
+    console.log(`Serverless API Response HTTP ${res.status}:`, JSON.stringify(data, null, 2));
+    return res.status === 200;
+  } catch (err) {
+    console.error('Failed to submit via serverless API:', err.message);
+    return false;
+  }
+}
+
+async function submitDirectly() {
+  const endpoints = [
+    'https://api.indexnow.org/IndexNow',
+    'https://www.bing.com/indexnow',
+  ];
+
   let anySuccess = false;
 
   for (const endpoint of endpoints) {
     try {
-      console.log(`Submitting to: ${endpoint} ...`);
+      console.log(`Submitting directly to: ${endpoint} ...`);
       const res = await fetch(endpoint, {
         method: 'POST',
         headers: {
@@ -75,11 +100,25 @@ async function submit() {
     }
   }
 
-  if (anySuccess) {
-    console.log('\nIndexNow submission completed successfully.');
+  return anySuccess;
+}
+
+async function main() {
+  if (viaApi) {
+    const ok = await submitViaServerlessApi();
+    if (ok) {
+      console.log('\nServerless API IndexNow submission completed successfully.');
+    } else {
+      console.warn('\nServerless API submission encountered issues.');
+    }
   } else {
-    console.warn('\nWarning: IndexNow endpoints returned non-200/202 statuses.');
+    const ok = await submitDirectly();
+    if (ok) {
+      console.log('\nDirect IndexNow protocol submission completed successfully.');
+    } else {
+      console.warn('\nDirect IndexNow protocol submission encountered issues.');
+    }
   }
 }
 
-submit();
+main();

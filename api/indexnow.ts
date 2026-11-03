@@ -1,8 +1,13 @@
 // Vercel Serverless Function: POST /api/indexnow
-// Server-side IndexNow submission protocol for search engines (Bing, Yandex, etc.)
+// Hardened server-side IndexNow submission protocol for search engines (Bing, Yandex, etc.)
+import crypto from 'crypto';
 
 export const DEFAULT_HOST = 'vyro-bytex.vercel.app';
 export const DEFAULT_INDEXNOW_KEY = '58b1e8e4a44c8a0cfe1600c4adaa19bf';
+export const DEFAULT_INDEXNOW_SECRET = 'vbx_idx_a9e8f72c3d4b1a5e6f8091247d';
+
+export const MAX_URLS_PER_BATCH = 100;
+export const MAX_PAYLOAD_BYTES = 64 * 1024; // 64 KB
 
 export const CANONICAL_URLS = [
   'https://vyro-bytex.vercel.app/',
@@ -14,6 +19,21 @@ export const CANONICAL_URLS = [
   'https://vyro-bytex.vercel.app/about',
   'https://vyro-bytex.vercel.app/contact',
 ];
+
+/**
+ * Constant-time string equality check to prevent timing attacks.
+ */
+function timingSafeEqualStr(a: string, b: string): boolean {
+  if (typeof a !== 'string' || typeof b !== 'string') {
+    return false;
+  }
+  const bufA = Buffer.from(a, 'utf8');
+  const bufB = Buffer.from(b, 'utf8');
+  if (bufA.length !== bufB.length) {
+    return false;
+  }
+  return crypto.timingSafeEqual(bufA, bufB);
+}
 
 export async function submitToIndexNow(
   urls: string[] = CANONICAL_URLS,
@@ -48,14 +68,14 @@ export async function submitToIndexNow(
         try {
           responseText = await response.text();
         } catch {
-          // ignore text error
+          // Ignore body read errors
         }
 
         return {
           endpoint,
           status,
           ok: status === 200 || status === 202,
-          response: responseText || (status === 200 ? 'OK' : status === 202 ? 'Accepted' : 'Response code ' + status),
+          response: responseText || (status === 200 ? 'OK' : status === 202 ? 'Accepted' : `HTTP ${status}`),
         };
       } catch (err: any) {
         return {
@@ -81,68 +101,113 @@ export default async function handler(req: any, res: any) {
     return res.status(200).end();
   }
 
-  // Optional Secret Protection: If INDEXNOW_SECRET is configured in Vercel env, require it
-  const serverSecret = process.env.INDEXNOW_SECRET;
-  if (serverSecret) {
-    const authHeader = req.headers['authorization'];
-    const querySecret = req.query?.secret;
-    const providedSecret = authHeader?.replace('Bearer ', '') || querySecret;
-
-    if (providedSecret !== serverSecret) {
-      return res.status(401).json({
-        success: false,
-        error: 'Unauthorized. Invalid or missing secret token.',
-      });
-    }
-  }
-
+  // Safe GET Status Inspection (Never exposes secrets or private keys)
   if (req.method === 'GET') {
     return res.status(200).json({
-      service: 'Vyrobytex IndexNow Notifier',
-      status: 'Ready',
+      service: 'Vyrobytex IndexNow Notifier API',
+      status: 'Online',
       host: DEFAULT_HOST,
-      keyLocation: `https://${DEFAULT_HOST}/${DEFAULT_INDEXNOW_KEY}.txt`,
-      monitoredUrlsCount: CANONICAL_URLS.length,
-      canonicalUrls: CANONICAL_URLS,
-      instructions: 'Send a POST request to this endpoint to submit URLs to IndexNow search engines.',
+      authenticationRequired: true,
+      authType: 'Bearer <token>',
+      maxBatchSize: MAX_URLS_PER_BATCH,
+      allowedHost: DEFAULT_HOST,
+      canonicalUrlsCount: CANONICAL_URLS.length,
+      timestamp: new Date().toISOString(),
     });
   }
 
   if (req.method === 'POST') {
+    // 1. Enforce Mandatory Authorization via Bearer Token
+    const authHeader = req.headers['authorization'];
+    if (!authHeader || typeof authHeader !== 'string' || !authHeader.startsWith('Bearer ')) {
+      return res.status(401).json({
+        success: false,
+        error: 'Unauthorized: Missing or malformed Authorization header. Expected Bearer token.',
+      });
+    }
+
+    const providedToken = authHeader.slice(7).trim();
+    const serverSecret = process.env.INDEXNOW_SECRET || DEFAULT_INDEXNOW_SECRET;
+
+    if (!timingSafeEqualStr(providedToken, serverSecret)) {
+      return res.status(401).json({
+        success: false,
+        error: 'Unauthorized: Invalid authentication credentials.',
+      });
+    }
+
+    // 2. Enforce Request Size Limits (Max 64 KB)
+    const contentLength = parseInt(req.headers['content-length'] || '0', 10);
+    if (contentLength > MAX_PAYLOAD_BYTES) {
+      return res.status(413).json({
+        success: false,
+        error: `Payload Too Large: Maximum request body size is ${MAX_PAYLOAD_BYTES / 1024} KB.`,
+      });
+    }
+
     try {
       const customUrls = Array.isArray(req.body?.urls) ? req.body.urls : undefined;
-      const urlsToSubmit = customUrls && customUrls.length > 0 ? customUrls : CANONICAL_URLS;
 
-      // Filter and validate URLs belong to host
-      const validUrls = urlsToSubmit.filter((url: string) => {
+      // 3. Enforce URL Count Limits (Max 100 URLs per batch)
+      if (customUrls && customUrls.length > MAX_URLS_PER_BATCH) {
+        return res.status(400).json({
+          success: false,
+          error: `Bad Request: URL count (${customUrls.length}) exceeds maximum batch limit of ${MAX_URLS_PER_BATCH}.`,
+        });
+      }
+
+      const candidateUrls: string[] = customUrls && customUrls.length > 0 ? customUrls : CANONICAL_URLS;
+
+      // 4. Strict Hostname & Protocol Validation against Canonical Domain
+      const targetHost = process.env.INDEXNOW_HOST || DEFAULT_HOST;
+      const validUrls: string[] = [];
+      const invalidUrls: string[] = [];
+
+      for (const item of candidateUrls) {
+        if (typeof item !== 'string') continue;
+        const trimmed = item.trim();
         try {
-          const parsed = new URL(url);
-          return parsed.hostname === DEFAULT_HOST || parsed.hostname.endsWith('.vercel.app');
+          const parsed = new URL(trimmed);
+          // Only allow HTTPS protocol and exact canonical host
+          if (
+            parsed.protocol === 'https:' &&
+            parsed.hostname.toLowerCase() === targetHost.toLowerCase()
+          ) {
+            validUrls.push(parsed.href);
+          } else {
+            invalidUrls.push(trimmed);
+          }
         } catch {
-          return false;
+          invalidUrls.push(trimmed);
         }
-      });
+      }
 
       if (validUrls.length === 0) {
         return res.status(400).json({
           success: false,
-          error: 'No valid URLs matching canonical host were provided.',
+          error: `Bad Request: No valid HTTPS URLs matching https://${targetHost} were provided.`,
+          rejectedUrls: invalidUrls.slice(0, 5),
         });
       }
 
+      // Deduplicate URLs before submission
+      const deduplicatedUrls = Array.from(new Set(validUrls));
+
+      // 5. Execute Server-Side IndexNow Submission
       const key = process.env.INDEXNOW_KEY || DEFAULT_INDEXNOW_KEY;
-      const submission = await submitToIndexNow(validUrls, DEFAULT_HOST, key);
+      const submission = await submitToIndexNow(deduplicatedUrls, targetHost, key);
 
       return res.status(200).json({
         success: true,
-        submittedUrlsCount: validUrls.length,
-        submittedUrls: validUrls,
-        submissionDetails: submission,
+        submittedUrlsCount: deduplicatedUrls.length,
+        submittedUrls: deduplicatedUrls,
+        submissionDetails: submission.results,
       });
     } catch (err: any) {
+      console.error('[IndexNow Serverless Error]:', err?.message || err);
       return res.status(500).json({
         success: false,
-        error: err.message || 'Internal server error while submitting to IndexNow',
+        error: 'Internal server error while submitting to IndexNow',
       });
     }
   }
