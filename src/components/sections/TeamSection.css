@@ -188,6 +188,43 @@
   line-height: 1.4;
 }
 
+/* Portfolio Link Button */
+.team-portfolio-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  margin-top: 0.75rem;
+  padding: 0.5rem 0.9rem;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-md);
+  color: var(--color-burnt-orange);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  min-height: 38px;
+  width: fit-content;
+  box-sizing: border-box;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.team-portfolio-btn:hover {
+  background-color: var(--color-burnt-orange);
+  border-color: var(--color-burnt-orange);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(213, 54, 7, 0.28);
+  transform: translateY(-1px);
+}
+
+.team-portfolio-btn:focus-visible {
+  outline: 2px solid var(--color-burnt-orange);
+  outline-offset: 2px;
+}
+
 /* Mobile Adjustments */
 @media (max-width: 639px) {
   .team-grid {

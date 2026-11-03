@@ -28,8 +28,9 @@ export function useScrollReveal(options: ScrollRevealOptions = {}) {
     duration = 0.75,
     stagger = 0.12,
     yOffset = 24,
-    start = 'top 85%',
-    toggleActions = 'play reverse play reverse',
+    start = 'top 88%',
+    // "play none none none": Plays entrance when scrolling down; does NOT reverse when scrolling up
+    toggleActions = 'play none none none',
   } = options;
 
   useEffect(() => {
@@ -72,6 +73,7 @@ export function useScrollReveal(options: ScrollRevealOptions = {}) {
                 trigger: item,
                 start,
                 toggleActions,
+                once: true,
               },
             }
           );
@@ -95,6 +97,7 @@ export function useScrollReveal(options: ScrollRevealOptions = {}) {
                   trigger: group,
                   start,
                   toggleActions,
+                  once: true,
                 },
               }
             );

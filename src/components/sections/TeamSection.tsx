@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { ArrowUpRight } from 'lucide-react';
 import { TEAM_MEMBERS, TEAM_SECTION_CONTENT } from '../../data/content';
 import { SectionHeading } from '../ui/SectionHeading';
 import { useCursor } from '../../hooks/useCursor';
@@ -88,6 +89,22 @@ export const TeamSection: React.FC<TeamSectionProps> = ({
                 <div className="team-card-body">
                   <h3 className="team-member-name">{member.name}</h3>
                   <p className="team-member-role">{member.role}</p>
+
+                  {member.portfolioUrl && (
+                    <a
+                      href={member.portfolioUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="team-portfolio-btn"
+                      aria-label={`View ${member.name}'s portfolio (opens in a new tab)`}
+                      onClick={(e) => e.stopPropagation()}
+                      onMouseEnter={() => setCursorMode('pointer')}
+                      onMouseLeave={resetCursor}
+                    >
+                      <span>View Portfolio</span>
+                      <ArrowUpRight size={14} aria-hidden="true" />
+                    </a>
+                  )}
                 </div>
               </article>
             );

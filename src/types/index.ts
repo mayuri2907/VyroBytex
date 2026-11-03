@@ -61,5 +61,6 @@ export interface TeamMember {
   image: string;
   alt: string;
   isFounder?: boolean;
+  portfolioUrl?: string;
 }
 

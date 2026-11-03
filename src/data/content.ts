@@ -502,8 +502,9 @@ export const TEAM_MEMBERS: TeamMember[] = [
     number: '03',
     name: 'MAN CHAUDHARY',
     role: 'Frontend Development & Marketing',
-    image: '/images/team/man-placeholder.svg',
-    alt: 'Temporary portrait placeholder for Man Chaudhary',
+    image: '/images/team/man-chaudhary.jpg',
+    alt: 'Portrait of Man Chaudhary — Frontend Development & Marketing at Vyrobytex',
+    portfolioUrl: 'https://man-chaudhari-portfolio.vercel.app',
   },
   {
     id: 'dixit-patel',
