@@ -1,6 +1,10 @@
 export const ROUTES = {
   HOME: '/',
   SERVICES: '/services',
+  SERVICES_WEB: '/services/website-development',
+  SERVICES_SOFTWARE: '/services/custom-software',
+  SERVICES_ECOMMERCE: '/services/ecommerce-development',
+  SERVICES_AI: '/services/ai-solutions',
   WORK: '/work',
   WORK_DETAIL: '/work/:id',
   ABOUT: '/about',

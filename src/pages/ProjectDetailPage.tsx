@@ -202,7 +202,7 @@ export const ProjectDetailPage: React.FC = () => {
                 </div>
               </div>
 
-              <div style={{ paddingTop: '1.5rem', borderTop: '1px solid var(--border-subtle)' }}>
+              <div style={{ paddingTop: '1.5rem', borderTop: '1px solid var(--border-subtle)', display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
                 <Button
                   to={ROUTES.CONTACT}
                   variant="primary"
@@ -213,6 +213,26 @@ export const ProjectDetailPage: React.FC = () => {
                 >
                   Commission Similar Build
                 </Button>
+                {project.category === 'E-commerce' && (
+                  <Button to={ROUTES.SERVICES_ECOMMERCE} variant="secondary" size="md" style={{ width: '100%' }}>
+                    Explore E-commerce Services
+                  </Button>
+                )}
+                {project.category === 'Software Development' && (
+                  <Button to={ROUTES.SERVICES_SOFTWARE} variant="secondary" size="md" style={{ width: '100%' }}>
+                    Explore Custom Software Services
+                  </Button>
+                )}
+                {project.category === 'AI Solutions' && (
+                  <Button to={ROUTES.SERVICES_AI} variant="secondary" size="md" style={{ width: '100%' }}>
+                    Explore AI Solutions
+                  </Button>
+                )}
+                {project.category === 'Website Development' && (
+                  <Button to={ROUTES.SERVICES_WEB} variant="secondary" size="md" style={{ width: '100%' }}>
+                    Explore Website Development
+                  </Button>
+                )}
               </div>
             </div>
           </div>

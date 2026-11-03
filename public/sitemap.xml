@@ -11,6 +11,26 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://vyro-bytex.vercel.app/services/website-development</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://vyro-bytex.vercel.app/services/custom-software</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://vyro-bytex.vercel.app/services/ecommerce-development</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://vyro-bytex.vercel.app/services/ai-solutions</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://vyro-bytex.vercel.app/work</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

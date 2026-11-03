@@ -11,6 +11,21 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import { SITE_URL, buildBreadcrumbSchema, buildServicesListSchema, buildFAQSchema } from '../lib/seo';
 import './ServicesPage.css';
 
+function getServiceRoute(id: string): string | null {
+  switch (id) {
+    case 'web-development':
+      return ROUTES.SERVICES_WEB;
+    case 'software-dev':
+      return ROUTES.SERVICES_SOFTWARE;
+    case 'ecommerce':
+      return ROUTES.SERVICES_ECOMMERCE;
+    case 'ai-solutions':
+      return ROUTES.SERVICES_AI;
+    default:
+      return null;
+  }
+}
+
 export const ServicesPage: React.FC = () => {
   usePageSEO({
     title: 'Digital Services & Solutions | Vyrobytex',
@@ -25,12 +40,15 @@ export const ServicesPage: React.FC = () => {
           { name: 'Services', url: '/services' },
         ]),
         buildServicesListSchema(
-          SERVICES.map((s) => ({
-            name: s.title,
-            description: s.shortDescription,
-            serviceType: s.tag,
-            url: `${SITE_URL}/services#${s.id}`,
-          }))
+          SERVICES.map((s) => {
+            const dedicated = getServiceRoute(s.id);
+            return {
+              name: s.title,
+              description: s.shortDescription,
+              serviceType: s.tag,
+              url: dedicated ? `${SITE_URL}${dedicated}` : `${SITE_URL}/services#${s.id}`,
+            };
+          })
         ),
         buildFAQSchema(FAQS),
       ],
@@ -212,17 +230,40 @@ export const ServicesPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div style={{ marginTop: '2.5rem', paddingTop: '1.5rem', borderTop: '1px solid var(--border-subtle)' }}>
-                  <Button
-                    to={ROUTES.CONTACT}
-                    variant="primary"
-                    size="md"
-                    icon={<ArrowUpRight size={16} />}
-                    iconPosition="up-right"
-                    style={{ width: '100%' }}
-                  >
-                    Discuss {service.title}
-                  </Button>
+                <div style={{ marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid var(--border-subtle)', display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
+                  {getServiceRoute(service.id) ? (
+                    <>
+                      <Button
+                        to={getServiceRoute(service.id)!}
+                        variant="primary"
+                        size="md"
+                        icon={<ArrowUpRight size={16} />}
+                        iconPosition="up-right"
+                        style={{ width: '100%' }}
+                      >
+                        Deep-Dive {service.title}
+                      </Button>
+                      <Button
+                        to={ROUTES.CONTACT}
+                        variant="secondary"
+                        size="md"
+                        style={{ width: '100%' }}
+                      >
+                        Request a Project Proposal
+                      </Button>
+                    </>
+                  ) : (
+                    <Button
+                      to={ROUTES.CONTACT}
+                      variant="primary"
+                      size="md"
+                      icon={<ArrowUpRight size={16} />}
+                      iconPosition="up-right"
+                      style={{ width: '100%' }}
+                    >
+                      Discuss {service.title}
+                    </Button>
+                  )}
                 </div>
               </div>
             </div>

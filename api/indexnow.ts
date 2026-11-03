@@ -12,6 +12,10 @@ export const MAX_PAYLOAD_BYTES = 64 * 1024; // 64 KB
 export const CANONICAL_URLS = [
   'https://vyro-bytex.vercel.app/',
   'https://vyro-bytex.vercel.app/services',
+  'https://vyro-bytex.vercel.app/services/website-development',
+  'https://vyro-bytex.vercel.app/services/custom-software',
+  'https://vyro-bytex.vercel.app/services/ecommerce-development',
+  'https://vyro-bytex.vercel.app/services/ai-solutions',
   'https://vyro-bytex.vercel.app/work',
   'https://vyro-bytex.vercel.app/work/aura-studio',
   'https://vyro-bytex.vercel.app/work/nexus-core',

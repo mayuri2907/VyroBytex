@@ -12,6 +12,10 @@ const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
 const CANONICAL_URLS = [
   `https://${HOST}/`,
   `https://${HOST}/services`,
+  `https://${HOST}/services/website-development`,
+  `https://${HOST}/services/custom-software`,
+  `https://${HOST}/services/ecommerce-development`,
+  `https://${HOST}/services/ai-solutions`,
   `https://${HOST}/work`,
   `https://${HOST}/work/aura-studio`,
   `https://${HOST}/work/nexus-core`,
