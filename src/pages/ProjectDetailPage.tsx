@@ -8,6 +8,7 @@ import { Button } from '../components/ui/Button';
 import { ContactCTA } from '../components/sections/ContactCTA';
 import { useCursor } from '../hooks/useCursor';
 import { usePageSEO } from '../hooks/usePageSEO';
+import { SITE_URL, buildBreadcrumbSchema, buildCaseStudySchema } from '../lib/seo';
 import './ProjectDetailPage.css';
 
 export const ProjectDetailPage: React.FC = () => {
@@ -17,8 +18,31 @@ export const ProjectDetailPage: React.FC = () => {
   const project = PROJECTS.find((p) => p.id === id);
 
   usePageSEO({
-    title: project ? `${project.title} — Case Study | Vyrobytex` : 'Project Showcase — Vyrobytex',
-    description: project?.summary,
+    title: project ? `${project.title} — Case Study | Vyrobytex` : 'Project Showcase | Vyrobytex',
+    description: project
+      ? `${project.summary} Architecture, challenge, and implementation breakdown by Vyrobytex.`
+      : 'Explore digital projects and bespoke technical builds by Vyrobytex.',
+    canonicalPath: project ? `/work/${project.id}` : '/work',
+    structuredData: project
+      ? {
+          '@context': 'https://schema.org',
+          '@graph': [
+            buildBreadcrumbSchema([
+              { name: 'Home', url: '/' },
+              { name: 'Work', url: '/work' },
+              { name: project.title, url: `/work/${project.id}` },
+            ]),
+            buildCaseStudySchema({
+              title: project.title,
+              description: project.summary,
+              url: `${SITE_URL}/work/${project.id}`,
+              image: project.image,
+              category: project.category,
+              year: project.year,
+            }),
+          ],
+        }
+      : undefined,
   });
 
   if (!project) {

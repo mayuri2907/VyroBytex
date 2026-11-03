@@ -1,19 +1,40 @@
 import React from 'react';
 import { ArrowUpRight, CheckCircle2, HelpCircle, Users, Layers, Terminal } from 'lucide-react';
-import { SERVICES } from '../data/content';
+import { SERVICES, FAQS } from '../data/content';
 import { ROUTES } from '../lib/routes';
 import { Button } from '../components/ui/Button';
 import { Badge } from '../components/ui/Badge';
 import { ContactCTA } from '../components/sections/ContactCTA';
+import { FAQSection } from '../components/sections/FAQSection';
 import { usePageSEO } from '../hooks/usePageSEO';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { SITE_URL, buildBreadcrumbSchema, buildServicesListSchema, buildFAQSchema } from '../lib/seo';
 import './ServicesPage.css';
 
 export const ServicesPage: React.FC = () => {
   usePageSEO({
-    title: 'Services & Capabilities — Vyrobytex',
+    title: 'Digital Services & Solutions | Vyrobytex',
     description:
-      'Explore Vyrobytex digital solutions: Website Development, E-commerce Solutions, Custom Software Development, and Practical AI Integrations.',
+      'Explore Vyrobytex digital solutions: Custom Website Development, E-commerce Platforms, Bespoke Software, AI Integrations, and Cloud Technology Solutions.',
+    canonicalPath: '/services',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        buildBreadcrumbSchema([
+          { name: 'Home', url: '/' },
+          { name: 'Services', url: '/services' },
+        ]),
+        buildServicesListSchema(
+          SERVICES.map((s) => ({
+            name: s.title,
+            description: s.shortDescription,
+            serviceType: s.tag,
+            url: `${SITE_URL}/services#${s.id}`,
+          }))
+        ),
+        buildFAQSchema(FAQS),
+      ],
+    },
   });
 
   const heroRef = useScrollReveal({ yOffset: 20 });
@@ -208,6 +229,9 @@ export const ServicesPage: React.FC = () => {
           ))}
         </div>
       </section>
+
+      {/* AEO Frequently Asked Questions */}
+      <FAQSection />
 
       {/* Bottom CTA */}
       <ContactCTA />

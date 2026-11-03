@@ -205,8 +205,50 @@ export const SERVICES: ServiceItem[] = [
     previewImage: '/images/projects/kroma-ai.jpg',
   },
   {
-    id: 'maintenance-support',
+    id: 'cloud-solutions',
     number: '05',
+    title: 'Cloud Technology Solutions',
+    shortDescription:
+      'Scalable cloud infrastructure, automated deployment pipelines, API integrations, and secure cloud environments built for business reliability.',
+    fullDescription:
+      'We architect and deploy secure, cost-effective cloud infrastructures tailored to growing businesses. From modern edge deployments and database clusters to continuous CI/CD pipelines and cloud migration stewardship, we ensure high uptime and effortless scaling.',
+    offerings: [
+      'Cloud Architecture & Migration',
+      'Serverless Deployments & Edge Hosting',
+      'Automated CI/CD Delivery Pipelines',
+      'Secure Database Architecture & Backups',
+      'Performance & Infrastructure Stewardship',
+    ],
+    problemsSolved: [
+      'Unreliable servers causing unexpected site outages during traffic spikes',
+      'High cloud bills from inefficiently configured cloud resources',
+      'Complex manual deployments prone to human configuration error',
+      'Lack of automated disaster recovery and backup strategies',
+    ],
+    whoBenefits: [
+      'Growing startups transitioning from prototype to scalable production',
+      'E-commerce stores preparing for seasonal or high-volume traffic surges',
+      'Companies modernizing legacy internal systems to cloud-native platforms',
+    ],
+    capabilities: [
+      'Vercel, AWS & Modern Edge Deployments',
+      'Dockerized Environments & Microservices',
+      'PostgreSQL, Redis & Cloud Database Optimization',
+      'SSL, CDN & Global Edge Caching Configuration',
+      'Continuous Monitoring, Alerting & Health Checks',
+    ],
+    deliverables: [
+      'Production-ready cloud deployment',
+      'Environment security configuration & access keys',
+      'Automated deployment pipelines (CI/CD)',
+      'Backup schedules & disaster recovery procedures',
+    ],
+    tag: 'Cloud & Infrastructure',
+    previewImage: '/images/projects/nexus-core.jpg',
+  },
+  {
+    id: 'maintenance-support',
+    number: '06',
     title: 'Maintenance & Support',
     shortDescription:
       'Optional ongoing technical stewardship, continuous security updates, performance monitoring, and iterative feature development for your peace of mind.',
@@ -515,4 +557,87 @@ export const TEAM_MEMBERS: TeamMember[] = [
     alt: 'Temporary portrait placeholder for Dixit Patel',
   },
 ];
+
+export interface FAQItem {
+  id: string;
+  question: string;
+  answer: string;
+  context?: string;
+}
+
+export const FAQS: FAQItem[] = [
+  {
+    id: 'services-overview',
+    question: 'What services does Vyrobytex provide?',
+    answer:
+      'Vyrobytex provides custom website development, e-commerce solutions, custom software engineering, practical AI-powered integrations, and cloud technology solutions for businesses.',
+    context:
+      'We focus on clean code, modern light aesthetics, high-speed performance, and accessible digital systems tailored to your business model and target audience.',
+  },
+  {
+    id: 'small-business',
+    question: 'Does Vyrobytex build websites for small businesses?',
+    answer:
+      'Yes. Vyrobytex builds professional, high-performance websites specifically tailored for small and medium-sized businesses, startups, and local business owners.',
+    context:
+      'We ensure that small businesses receive enterprise-grade design and fast loading speeds without the bloat, slow templates, or ongoing licensing fees associated with generic site builders.',
+  },
+  {
+    id: 'ecommerce-solutions',
+    question: 'Can Vyrobytex build an e-commerce website?',
+    answer:
+      'Yes. We engineer custom digital storefronts and e-commerce platforms designed for frictionless checkout and conversion.',
+    context:
+      'Whether you need a streamlined direct-to-consumer store, a specialized product catalog, or custom payment gateway integration, our e-commerce solutions emphasize instant page loading, mobile responsiveness, and intuitive navigation.',
+  },
+  {
+    id: 'custom-software',
+    question: 'What is custom software development?',
+    answer:
+      'Custom software development is the process of designing and building bespoke applications, internal tools, or client portals tailored to your company’s exact operational requirements.',
+    context:
+      'Unlike generic off-the-shelf software, custom applications eliminate unnecessary subscription bloat, integrate directly with your existing tools, and scale smoothly as your team grows.',
+  },
+  {
+    id: 'ai-integrations',
+    question: 'Can Vyrobytex build AI-powered business solutions?',
+    answer:
+      'Yes. Vyrobytex designs and integrates practical AI features into business applications and websites.',
+    context:
+      'Our capabilities include private document-grounded search (RAG), conversational support assistants, intelligent data extraction, and automated workflow pipelines that assist your team with repetitive tasks.',
+  },
+  {
+    id: 'project-kickoff',
+    question: 'What information is needed to start a website project?',
+    answer:
+      'To begin, we typically need an overview of your business goals, your target audience, any reference websites or design preferences you admire, the key pages or features required, and your preferred timeline.',
+    context:
+      'If you have existing branding assets, logos, or copy, we incorporate them. If not, we can guide you through structuring your content and visual direction from the ground up.',
+  },
+  {
+    id: 'pricing-factors',
+    question: 'What affects the cost of developing a business website?',
+    answer:
+      'Website development costs depend on project scope, custom design requirements, total page count, interactive features, third-party integrations, and whether you require e-commerce or custom software capabilities.',
+    context:
+      'Because every business has different operational requirements, we review each project enquiry individually and provide a transparent, scoped proposal rather than applying rigid one-size-fits-all fees.',
+  },
+  {
+    id: 'request-proposal',
+    question: 'How can a business request a project proposal?',
+    answer:
+      'You can request a project proposal by using the contact form on our website, submitting the quick enquiry modal, messaging founder Navin Chaudhary on WhatsApp (+91 81559 52384), or sending an email to chaudharynax27@gmail.com.',
+    context:
+      'We review every incoming inquiry personally and typically respond within one business day with clarifying questions or next steps.',
+  },
+  {
+    id: 'ongoing-maintenance',
+    question: 'Does a website require ongoing maintenance?',
+    answer:
+      'Yes, digital platforms benefit significantly from regular maintenance to maintain high security, uptime, browser compatibility, and peak search engine performance.',
+    context:
+      'Vyrobytex offers optional ongoing technical stewardship, including proactive dependency updates, security patches, Core Web Vitals monitoring, automated backups, and iterative feature enhancements.',
+  },
+];
+
 

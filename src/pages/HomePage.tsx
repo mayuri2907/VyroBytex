@@ -7,12 +7,18 @@ import { ProcessSection } from '../components/sections/ProcessSection';
 import { TeamSection } from '../components/sections/TeamSection';
 import { ContactCTA } from '../components/sections/ContactCTA';
 import { usePageSEO } from '../hooks/usePageSEO';
+import { buildOrganizationSchema, buildWebSiteSchema } from '../lib/seo';
 
 export const HomePage: React.FC = () => {
   usePageSEO({
-    title: 'Vyrobytex — Digital Experiences. Built to Move Business Forward.',
+    title: 'Vyrobytex | Website Development, Software & AI Solutions',
     description:
-      'We design and develop custom websites, software, and AI-powered solutions that help businesses build stronger digital experiences and connect with their customers.',
+      'Vyrobytex builds modern business websites, e-commerce platforms, custom software, and AI-powered digital solutions to help businesses grow.',
+    canonicalPath: '/',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@graph': [buildOrganizationSchema(), buildWebSiteSchema()],
+    },
   });
 
   return (
@@ -27,3 +33,5 @@ export const HomePage: React.FC = () => {
     </>
   );
 };
+
+export default HomePage;

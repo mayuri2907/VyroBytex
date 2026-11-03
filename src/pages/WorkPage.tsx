@@ -9,15 +9,21 @@ import { ContactCTA } from '../components/sections/ContactCTA';
 import { useCursor } from '../hooks/useCursor';
 import { usePageSEO } from '../hooks/usePageSEO';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { buildBreadcrumbSchema } from '../lib/seo';
 import './WorkPage.css';
 
 type FilterCategory = 'All' | 'E-commerce' | 'Software Development' | 'AI Solutions';
 
 export const WorkPage: React.FC = () => {
   usePageSEO({
-    title: 'Selected Work & Portfolio — Vyrobytex',
+    title: 'Selected Work & Portfolio | Vyrobytex',
     description:
-      'Curated concept architectures and production-minded design explorations across e-commerce, custom software, and AI solutions.',
+      'Explore Vyrobytex digital projects and production-grade concept architectures across e-commerce platforms, custom software tools, and AI solutions.',
+    canonicalPath: '/work',
+    structuredData: buildBreadcrumbSchema([
+      { name: 'Home', url: '/' },
+      { name: 'Work', url: '/work' },
+    ]),
   });
   const [activeCategory, setActiveCategory] = useState<FilterCategory>('All');
   const { setCursorMode, resetCursor } = useCursor();

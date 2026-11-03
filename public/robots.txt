@@ -1,0 +1,9 @@
+# Vyrobytex Robots Configuration
+# Production Domain: https://vyro-bytex.vercel.app
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Sitemap Location
+Sitemap: https://vyro-bytex.vercel.app/sitemap.xml

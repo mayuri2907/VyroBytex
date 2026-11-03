@@ -9,13 +9,25 @@ import { TeamSection } from '../components/sections/TeamSection';
 import { ContactCTA } from '../components/sections/ContactCTA';
 import { usePageSEO } from '../hooks/usePageSEO';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { buildBreadcrumbSchema, buildOrganizationSchema } from '../lib/seo';
 import './AboutPage.css';
 
 export const AboutPage: React.FC = () => {
   usePageSEO({
-    title: 'About Vyrobytex — Founder & Philosophy',
+    title: 'About Vyrobytex | Philosophy, Team & Engineering Standards',
     description:
-      'Learn about Vyrobytex, founder Navin Chaudhary, our 5 operating principles, and our disciplined digital delivery process.',
+      'Learn about Vyrobytex, founder Navin Chaudhary, our engineering team, operating principles, and disciplined approach to custom software and web development.',
+    canonicalPath: '/about',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        buildBreadcrumbSchema([
+          { name: 'Home', url: '/' },
+          { name: 'About', url: '/about' },
+        ]),
+        buildOrganizationSchema(),
+      ],
+    },
   });
 
   const heroRef = useScrollReveal({ yOffset: 20 });

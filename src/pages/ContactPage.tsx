@@ -6,6 +6,7 @@ import { Button } from '../components/ui/Button';
 import { useCursor } from '../hooks/useCursor';
 import { usePageSEO } from '../hooks/usePageSEO';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { buildBreadcrumbSchema, buildOrganizationSchema } from '../lib/seo';
 import './ContactPage.css';
 
 const InstagramIcon: React.FC<{ size?: number }> = ({ size = 22 }) => (
@@ -27,9 +28,20 @@ const InstagramIcon: React.FC<{ size?: number }> = ({ size = 22 }) => (
 
 export const ContactPage: React.FC = () => {
   usePageSEO({
-    title: "Contact Vyrobytex — Let's Talk About Your Project",
+    title: 'Contact Vyrobytex | Start a Project or Enquiry',
     description:
-      'Start a project conversation with Vyrobytex. Reach founder Navin Chaudhary directly via WhatsApp (+91 81609 59830), phone, or email.',
+      'Start a project conversation with Vyrobytex. Reach founder Navin Chaudhary directly via WhatsApp (+91 81559 52384), email, or proposal request.',
+    canonicalPath: '/contact',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        buildBreadcrumbSchema([
+          { name: 'Home', url: '/' },
+          { name: 'Contact', url: '/contact' },
+        ]),
+        buildOrganizationSchema(),
+      ],
+    },
   });
   const { setCursorMode, resetCursor } = useCursor();
 

@@ -5,7 +5,11 @@ import { Button } from '../components/ui/Button';
 import { usePageSEO } from '../hooks/usePageSEO';
 
 export const NotFoundPage: React.FC = () => {
-  usePageSEO({ title: '404 Page Not Found — Vyrobytex' });
+  usePageSEO({
+    title: '404: Page Not Found | Vyrobytex',
+    description: 'The requested page could not be found on Vyrobytex.',
+    robots: 'noindex, nofollow',
+  });
   return (
     <div
       style={{
