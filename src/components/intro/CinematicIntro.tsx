@@ -2,18 +2,15 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { useCursor } from '../../hooks/useCursor';
+import { isCinematicIntroActive, markCinematicIntroSeen } from '../../lib/introState';
 import './CinematicIntro.css';
-
-// Module-level in-memory flag: persists across SPA client-side route changes,
-// but resets automatically upon browser page reload (F5 / refresh).
-let hasSeenIntroSession = false;
 
 export const CinematicIntro: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
   // If already seen in this session (e.g. user navigated internally), do not mount.
-  const [shouldRender, setShouldRender] = useState(!hasSeenIntroSession);
+  const [shouldRender, setShouldRender] = useState(isCinematicIntroActive);
   const [currentScene, setCurrentScene] = useState<1 | 2 | 3 | 4>(() => {
     if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return 4;
@@ -47,7 +44,7 @@ export const CinematicIntro: React.FC = () => {
   const triggerExit = useCallback(() => {
     if (exitTriggeredRef.current) return;
     exitTriggeredRef.current = true;
-    hasSeenIntroSession = true;
+    markCinematicIntroSeen();
 
     clearAllTimeouts();
     setIsExiting(true);

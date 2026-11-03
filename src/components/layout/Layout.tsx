@@ -7,6 +7,7 @@ import { CustomCursor } from '../cursor/CustomCursor';
 import { InteractiveBackground } from '../background/InteractiveBackground';
 import { FloatingSocialContact } from './FloatingSocialContact';
 import { CinematicIntro } from '../intro/CinematicIntro';
+import { LeadCaptureModal } from '../modal/LeadCaptureModal';
 
 export const Layout: React.FC = () => {
   return (
@@ -24,6 +25,7 @@ export const Layout: React.FC = () => {
       </main>
       <FloatingSocialContact />
       <Footer />
+      <LeadCaptureModal />
     </div>
   );
 };
