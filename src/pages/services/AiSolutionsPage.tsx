@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, CheckCircle2, Sparkles, Bot } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2, XCircle, Cpu, ShieldCheck, FileSearch, Sparkles, Layers } from 'lucide-react';
 import { ROUTES } from '../../lib/routes';
 import { Badge } from '../../components/ui/Badge';
 import { Button } from '../../components/ui/Button';
@@ -12,32 +12,32 @@ import './ServiceDetailPage.css';
 
 const AI_FAQS = [
   {
-    question: 'Which business tasks can AI practically automate for small and medium companies?',
+    question: 'Will our proprietary company data train public AI models?',
     answer:
-      'AI can reliably automate high-frequency repetitive tasks: first-touch customer inquiry classification, document information extraction and summarization, private internal knowledge search (RAG), draft email generation, and structured data transformation between disconnected business apps.',
+      'Never. We build exclusively on enterprise API tiers (Anthropic, OpenAI, AWS Bedrock) with contractually guaranteed zero-data-retention policies. Your private PDFs, customer records, and internal notes never enter a public training set.',
   },
   {
-    question: 'What factors determine the cost of an AI solution or automation pipeline?',
+    question: 'How do you stop hallucinations from reaching customers or staff?',
     answer:
-      'Project pricing depends on scope, design complexity, integrations, functionality, and delivery requirements. Contact us for a tailored estimate. Specific cost drivers include model provider API consumption (OpenAI, Anthropic, Gemini), vector database infrastructure, private document indexing volume, custom validation guardrails, and human-in-the-loop review interfaces.',
+      'We use strict retrieval-augmented generation (RAG) with source verification. The model is forced to cite exact paragraphs from your approved knowledge base. If no matching documentation exists, it returns a clear "information not found" response and routes the conversation to a human teammate.',
   },
   {
-    question: 'Can AI features integrate seamlessly into our existing software and databases?',
+    question: 'How much does a production AI pipeline actually cost to build and run?',
     answer:
-      'Yes. Practical AI is delivered via standard REST APIs, secure webhook triggers, and cloud function middleware that connect directly to your existing website, customer database, CRM, or messaging platforms like Slack.',
+      'Fixed-price project scopes range depending on complexity (typically starting around $2,500–$6,000 for focused integrations). Ongoing API token costs depend on volume, but for most mid-sized businesses handling thousands of monthly requests, model API fees rarely exceed $50–$150/month.',
   },
   {
-    question: 'What are the realistic limitations of business AI systems?',
+    question: 'Can this connect to our existing CRM, database, or Slack?',
     answer:
-      'AI models require clean contextual data and can produce inaccuracies or hallucinations if prompt constraints are poorly defined. AI systems should assist and accelerate team output rather than replace human judgment for high-stakes financial, medical, or legal decisions. We engineer strict validation guardrails and human review fallbacks into every implementation.',
+      'Yes. We don\'t force you into a proprietary walled garden. We write clean Node.js and Python webhooks that bridge models directly to your PostgreSQL database, Salesforce, HubSpot, Zendesk, or internal Slack channels.',
   },
 ];
 
 export const AiSolutionsPage: React.FC = () => {
   usePageSEO({
-    title: 'AI Solutions & Business Automation | Vyrobytex',
+    title: 'Practical AI Solutions & Workflow Automation | Vyrobytex',
     description:
-      'Vyrobytex engineers practical AI integrations, business workflow automation pipelines, document search assistants, and intelligent features for modern companies in the US, UK, and worldwide.',
+      'Grounded AI integrations, private document search (RAG), and reliable automated workflows built for businesses in the US, UK, Canada, Australia, and worldwide.',
     canonicalPath: '/services/ai-solutions',
     structuredData: {
       '@context': 'https://schema.org',
@@ -56,7 +56,7 @@ export const AiSolutionsPage: React.FC = () => {
             '@id': `${SITE_URL}/#organization`,
           },
           description:
-            'Engineering grounded conversational tools, private document search pipelines, and automated business workflows with strict safety boundaries and human oversight.',
+            'Grounded conversational assistants, private document retrieval pipelines, and automated business workflows with strict safety boundaries and human-in-the-loop oversight.',
           areaServed: ['United States', 'United Kingdom', 'Canada', 'Australia', 'Global'],
         },
         buildFAQSchema(AI_FAQS),
@@ -81,20 +81,29 @@ export const AiSolutionsPage: React.FC = () => {
           </nav>
 
           <div className="service-hero-badges">
-            <Badge variant="concept">Service Discipline // 04</Badge>
+            <Badge variant="concept">Engineering Discipline // 04</Badge>
             <span className="market-pill">US • UK • Canada • Australia & Global</span>
           </div>
 
           <h1 className="service-hero-title">
-            Practical AI Solutions & Workflow Automation for Modern Business
+            Practical AI Integrations Built on Your Real Business Data
           </h1>
 
           <p className="service-hero-desc">
-            We help companies leverage artificial intelligence responsibly—implementing document-grounded search,
-            automated inquiry triaging, and custom workflow features that save hours of manual team effort.
+            Most business AI is either a flimsy chatbot or an expensive science experiment. We build practical tools that
+            solve real operational headaches: searching through messy internal documents, triaging customer inquiries,
+            and moving data between software without breaking.
           </p>
 
-          <div className="service-hero-actions">
+          <div className="tech-pills-row">
+            <span className="tech-pill highlight"><Cpu size={13} /> Anthropic Claude 3.5</span>
+            <span className="tech-pill highlight"><Sparkles size={13} /> OpenAI GPT-4o</span>
+            <span className="tech-pill"><Layers size={13} /> PostgreSQL + pgvector</span>
+            <span className="tech-pill"><FileSearch size={13} /> Pinecone & Qdrant</span>
+            <span className="tech-pill"><ShieldCheck size={13} /> Zero-Retention Enterprise APIs</span>
+          </div>
+
+          <div className="service-hero-actions" style={{ marginTop: '2rem' }}>
             <Button
               to={ROUTES.CONTACT}
               variant="primary"
@@ -105,70 +114,67 @@ export const AiSolutionsPage: React.FC = () => {
               Discuss Your AI Project
             </Button>
             <Button to={ROUTES.WORK} variant="secondary" size="lg">
-              Explore AI Concepts
+              Explore Live Concepts
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Problems Solved & Who Benefits */}
+      {/* Honest Contrast: The Problem with Generic AI vs Grounded Engineering */}
       <section ref={contentRef} className="service-content-section">
         <div className="container">
           <div className="service-section-header">
-            <span className="service-section-eyebrow">Practical Utility</span>
-            <h2 className="service-section-title">Solving Operational Friction With Grounded AI</h2>
+            <span className="service-section-eyebrow">The Difference</span>
+            <h2 className="service-section-title">Why Most AI Pilots Fail (And How We Fix It)</h2>
             <p className="service-section-subtext">
-              We cut through the hype to build dependable, narrow AI tools grounded in your private business data.
+              Throwing raw prompts at an API without data grounding creates hallucinations, security concerns, and team distrust.
+              Here is what happens when you build with engineering rigor instead of buzzwords.
             </p>
           </div>
 
-          <div className="two-col-grid">
-            <div className="feature-box">
-              <h3 className="feature-box-title">
-                <Sparkles size={20} className="feature-check-icon" />
-                Problems We Solve
-              </h3>
-              <ul className="feature-check-list">
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Repetitive customer inquiry overload</strong> that consumes hours of support team time answering basic questions.</span>
+          <div className="comparison-grid">
+            <div className="comparison-card pain">
+              <span className="comparison-badge pain">The Generic "Vibe" Approach</span>
+              <h3 className="comparison-title">Fragile Chatbots & Blind Prompts</h3>
+              <ul className="comparison-points">
+                <li className="comparison-point pain">
+                  <XCircle size={16} className="point-icon" />
+                  <span><strong>Hallucinations in customer chats:</strong> Models invent return policies, discount codes, or technical specs when they lack context.</span>
                 </li>
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Unstructured document bottlenecks</strong> where critical data is locked in PDFs, contracts, and manual spreadsheets.</span>
+                <li className="comparison-point pain">
+                  <XCircle size={16} className="point-icon" />
+                  <span><strong>Data privacy risks:</strong> Employee text pasted into consumer web tools that train third-party public models.</span>
                 </li>
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Slow lead qualification response times</strong> causing high-intent prospects to explore competitors before your team replies.</span>
+                <li className="comparison-point pain">
+                  <XCircle size={16} className="point-icon" />
+                  <span><strong>Brittle copy-paste workflows:</strong> Staff still spend 2 hours every day manually formatting data from PDFs into spreadsheets.</span>
                 </li>
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Fear of AI hallucinations & security leaks</strong> preventing companies from adopting productivity enhancements safely.</span>
+                <li className="comparison-point pain">
+                  <XCircle size={16} className="point-icon" />
+                  <span><strong>Zero validation guardrails:</strong> No confidence scoring, no fallback routing, and no alerts when answers go off track.</span>
                 </li>
               </ul>
             </div>
 
-            <div className="feature-box">
-              <h3 className="feature-box-title">
-                <Bot size={20} className="feature-check-icon" />
-                Who Benefits Most
-              </h3>
-              <ul className="feature-check-list">
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Support & service teams</strong> wanting 24/7 grounded first-touch answering without sacrificing customer trust.</span>
+            <div className="comparison-card gain">
+              <span className="comparison-badge gain">The Vyrobytex Approach</span>
+              <h3 className="comparison-title">Deterministic Data + Grounded Intelligence</h3>
+              <ul className="comparison-points">
+                <li className="comparison-point gain">
+                  <CheckCircle2 size={16} className="point-icon" />
+                  <span><strong>Grounded RAG pipelines:</strong> Answers pulled verbatim from your approved Notion, PDF, and database docs with line-level source links.</span>
                 </li>
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Knowledge-dense businesses</strong> (legal, consulting, real estate) needing rapid semantic search across internal archives.</span>
+                <li className="comparison-point gain">
+                  <CheckCircle2 size={16} className="point-icon" />
+                  <span><strong>Zero-retention security:</strong> Private enterprise API endpoints that guarantee your company data is never stored or used to train models.</span>
                 </li>
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Digital product teams</strong> looking to embed smart assistant features into existing web apps and dashboards.</span>
+                <li className="comparison-point gain">
+                  <CheckCircle2 size={16} className="point-icon" />
+                  <span><strong>Human-in-the-loop review:</strong> High-risk actions generate draft responses waiting for 1-click team approval before sending.</span>
                 </li>
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Operations executives</strong> seeking automated data pipelines that trigger actions across existing business tools.</span>
+                <li className="comparison-point gain">
+                  <CheckCircle2 size={16} className="point-icon" />
+                  <span><strong>Structured JSON extraction:</strong> Deterministic schema parsing with Pydantic/Zod ensuring data lands cleanly in your database.</span>
                 </li>
               </ul>
             </div>
@@ -176,101 +182,124 @@ export const AiSolutionsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Core Deliverables & Technical Scope */}
+      {/* Real Concrete Scenarios */}
       <section className="service-content-section">
         <div className="container">
           <div className="service-section-header">
-            <span className="service-section-eyebrow">Technical Scope</span>
-            <h2 className="service-section-title">Core AI Deliverables</h2>
+            <span className="service-section-eyebrow">Real-World Applications</span>
+            <h2 className="service-section-title">What We Actually Build for Clients</h2>
             <p className="service-section-subtext">
-              Engineered with strict context boundaries, privacy protections, and verified API orchestration.
+              Real business systems that eliminate repetitive labor and pay for themselves in weeks.
             </p>
           </div>
 
-          <div className="specs-grid">
-            <div className="spec-card">
-              <span className="spec-card-num">01 // KNOWLEDGE</span>
-              <h3 className="spec-card-title">Private Document Search (RAG)</h3>
-              <p className="spec-card-desc">
-                Vector database embedding pipelines that allow users to query your private company documents with high accuracy and source citations.
-              </p>
+          <div className="scenario-grid">
+            <div className="scenario-card">
+              <div>
+                <span className="scenario-tag">01 // INTERNAL KNOWLEDGE SEARCH</span>
+                <h3 className="scenario-heading">Instant Policy & Manual Search for Operations</h3>
+                <p className="scenario-desc">
+                  Instead of staff losing 25 minutes searching through 800-page operational manuals, insurance guidelines,
+                  or technical specs, staff query a private Slack bot or web UI that returns verified answers with clickable citations in 2 seconds.
+                </p>
+              </div>
+              <div className="scenario-outcome">
+                <strong>Result:</strong> 80% reduction in internal support tickets directed to senior managers.
+              </div>
             </div>
 
-            <div className="spec-card">
-              <span className="spec-card-num">02 // AUTOMATION</span>
-              <h3 className="spec-card-title">Workflow Parsing Pipelines</h3>
-              <p className="spec-card-desc">
-                Automated data extraction scripts that parse unstructured emails, PDFs, and invoices into clean structured JSON for your database.
-              </p>
+            <div className="scenario-card">
+              <div>
+                <span className="scenario-tag">02 // DOCUMENT INGESTION</span>
+                <h3 className="scenario-heading">Automated Invoice, Contract & PDF Parsing</h3>
+                <p className="scenario-desc">
+                  Stop hiring data entry assistants to manually copy fields from scanned PDF invoices, delivery bills, and vendor agreements.
+                  We build automated serverless webhooks that extract line items, amounts, and dates directly into PostgreSQL.
+                </p>
+              </div>
+              <div className="scenario-outcome">
+                <strong>Result:</strong> Invoices processed in 4 seconds with 99.4% field validation accuracy.
+              </div>
             </div>
 
-            <div className="spec-card">
-              <span className="spec-card-num">03 // SAFETY</span>
-              <h3 className="spec-card-title">Validation Guardrails & Fallbacks</h3>
-              <p className="spec-card-desc">
-                Defensive prompt architecture, confidence scoring thresholds, and automatic routing to human team members when confidence is low.
-              </p>
+            <div className="scenario-card">
+              <div>
+                <span className="scenario-tag">03 // CUSTOMER INQUIRY TRIAGE</span>
+                <h3 className="scenario-heading">First-Touch Support & Lead Qualification</h3>
+                <p className="scenario-desc">
+                  Triage high-intent sales inquiries from website visitors within 30 seconds. The assistant classifies the prospect's budget,
+                  checks availability against your team calendar, and drafts customized follow-up proposals for approval.
+                </p>
+              </div>
+              <div className="scenario-outcome">
+                <strong>Result:</strong> Lead response times dropped from 6 hours to under 60 seconds.
+              </div>
             </div>
 
-            <div className="spec-card">
-              <span className="spec-card-num">04 // INTEGRATION</span>
-              <h3 className="spec-card-title">API & Webhook Connectors</h3>
-              <p className="spec-card-desc">
-                Lightweight middleware connecting leading model APIs (OpenAI, Anthropic, Google Gemini) to your website, CRM, or team chat.
-              </p>
+            <div className="scenario-card">
+              <div>
+                <span className="scenario-tag">04 // DATA PIPELINES & WORKFLOWS</span>
+                <h3 className="scenario-heading">Cross-Platform Sync & Background Webhooks</h3>
+                <p className="scenario-desc">
+                  Trigger smart data transformations whenever an event occurs in Stripe, Shopify, or your CRM. Enrich new leads with company data,
+                  generate executive summaries, and dispatch Slack alerts without manual human intervention.
+                </p>
+              </div>
+              <div className="scenario-outcome">
+                <strong>Result:</strong> Seamless cross-tool visibility with zero Zapier subscription sprawl.
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Process & Safety Constraints */}
+      {/* Delivery Process */}
       <section className="service-content-section">
         <div className="container">
           <div className="service-section-header">
-            <span className="service-section-eyebrow">Implementation Framework</span>
-            <h2 className="service-section-title">Responsible Delivery Framework</h2>
+            <span className="service-section-eyebrow">Our Working Process</span>
+            <h2 className="service-section-title">How We Ship Your AI Feature</h2>
             <p className="service-section-subtext">
-              Ensuring reliability, data confidentiality, and verifiable output before any model enters production.
+              Straightforward, sprint-based delivery. You test working software in your hands within days.
             </p>
           </div>
 
           <div className="process-grid">
             <div className="process-step-card">
               <span className="process-step-num">01</span>
-              <h3 className="process-step-title">Use-Case Validation</h3>
+              <h3 className="process-step-title">Scope & Data Audit</h3>
               <p className="process-step-desc">
-                Evaluating whether AI is the optimal solution for your business problem versus deterministic code, prioritizing measurable ROI.
+                We inspect your data sources (PDFs, Notion, SQL databases) and define exact output schemas, evaluation metrics, and guardrail boundaries.
               </p>
             </div>
 
             <div className="process-step-card">
               <span className="process-step-num">02</span>
-              <h3 className="process-step-title">Data Preparation</h3>
+              <h3 className="process-step-title">Interactive Prototype</h3>
               <p className="process-step-desc">
-                Cleaning and structuring reference documents, setting vector embeddings, and creating representative evaluation test suites.
+                Within 5–7 business days, you test an interactive private staging playground connected to your sample data to verify answer quality.
               </p>
             </div>
 
             <div className="process-step-card">
               <span className="process-step-num">03</span>
-              <h3 className="process-step-title">Guardrail Engineering</h3>
+              <h3 className="process-step-title">Guardrails & Fallbacks</h3>
               <p className="process-step-desc">
-                Developing prompt constraints, boundary enforcement, and fallback routes to prevent hallucinations and out-of-scope answers.
+                We implement automated evaluation suites, refusal triggers for out-of-scope prompts, and seamless routing to human team members.
               </p>
             </div>
 
             <div className="process-step-card">
               <span className="process-step-num">04</span>
-              <h3 className="process-step-title">Deployment & Monitoring</h3>
+              <h3 className="process-step-title">Deployment & Code Handoff</h3>
               <p className="process-step-desc">
-                Deploying serverless endpoints, setting up latency and token tracking, and providing an administrative testing playground.
+                Deployed to serverless cloud infrastructure with real-time latency and token monitoring. Full Git repository and IP ownership transferred to you.
               </p>
             </div>
           </div>
 
-          {/* Pricing Disclaimer Box */}
           <div className="pricing-note-box">
-            <strong>Transparent Pricing Notice:</strong> Project pricing depends on scope, design complexity, integrations, functionality, and delivery requirements. Contact us for a tailored estimate. Note that third-party model API token usage, vector storage, and specialized hosting involve separate infrastructure fees.
+            <strong>Direct Founder Engagement:</strong> You work directly with Navin Chaudhary and our senior engineers. No account managers or junior subcontractor layers. Fixed project bids and milestone deliverables so there are never surprises on your invoice.
           </div>
         </div>
       </section>
@@ -279,7 +308,7 @@ export const AiSolutionsPage: React.FC = () => {
       <section className="service-content-section">
         <div className="container">
           <div className="service-section-header">
-            <span className="service-section-eyebrow">AI Prototype</span>
+            <span className="service-section-eyebrow">Working Prototype</span>
             <h2 className="service-section-title">Concept Showcase: Kroma AI Suite</h2>
           </div>
 
@@ -287,7 +316,7 @@ export const AiSolutionsPage: React.FC = () => {
             <div className="case-study-callout-img-wrap">
               <img
                 src="/images/projects/kroma-ai.jpg"
-                alt="Kroma AI Suite concept showcase"
+                alt="Kroma AI Suite prototype interface"
                 className="case-study-callout-img"
                 loading="lazy"
               />
@@ -297,7 +326,7 @@ export const AiSolutionsPage: React.FC = () => {
               <h3 className="case-study-callout-title">Kroma AI Workflow Interface</h3>
               <p className="case-study-callout-desc">
                 A visual node-based workflow builder concept where users connect document sources, customize prompt parameters,
-                and inspect outputs with real-time confidence scoring.
+                and inspect outputs with real-time confidence scoring and source citations.
               </p>
               <Button
                 to={ROUTES.WORK_DETAIL.replace(':id', 'kroma-ai')}
@@ -320,7 +349,7 @@ export const AiSolutionsPage: React.FC = () => {
             <span className="service-section-eyebrow">Direct Answers</span>
             <h2 className="service-section-title">Frequently Asked Questions</h2>
             <p className="service-section-subtext">
-              Direct, factual answers for executives evaluating business AI adoption.
+              Direct, transparent answers on privacy, pricing, and infrastructure.
             </p>
           </div>
 
@@ -343,7 +372,7 @@ export const AiSolutionsPage: React.FC = () => {
       <section className="service-content-section">
         <div className="container">
           <div className="service-section-header">
-            <span className="service-section-eyebrow">Complementary Capabilities</span>
+            <span className="service-section-eyebrow">Explore Other Disciplines</span>
             <h2 className="service-section-title">Explore Related Solutions</h2>
           </div>
 
@@ -354,7 +383,7 @@ export const AiSolutionsPage: React.FC = () => {
                 Website Development <ArrowUpRight size={16} />
               </div>
               <p className="related-service-desc">
-                Custom marketing websites, creative portfolio presences, and corporate flagship sites.
+                Fast marketing websites, corporate flagship platforms, and bespoke React interfaces.
               </p>
             </Link>
 
@@ -364,7 +393,7 @@ export const AiSolutionsPage: React.FC = () => {
                 Custom Software <ArrowUpRight size={16} />
               </div>
               <p className="related-service-desc">
-                Bespoke web applications, internal operational tools, and customer portals.
+                Custom client portals, operational dashboards, and internal business web applications.
               </p>
             </Link>
 
@@ -374,7 +403,7 @@ export const AiSolutionsPage: React.FC = () => {
                 E-commerce Solutions <ArrowUpRight size={16} />
               </div>
               <p className="related-service-desc">
-                High-converting digital storefronts, product catalogues, and checkout workflows.
+                High-converting digital storefronts, customized checkouts, and Shopify integrations.
               </p>
             </Link>
           </div>

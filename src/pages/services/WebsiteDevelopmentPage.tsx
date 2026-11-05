@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, CheckCircle2, Globe, Zap } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2, XCircle, Code2, Gauge, Search, Sparkles, Layout } from 'lucide-react';
 import { ROUTES } from '../../lib/routes';
 import { Badge } from '../../components/ui/Badge';
 import { Button } from '../../components/ui/Button';
@@ -12,32 +12,32 @@ import './ServiceDetailPage.css';
 
 const WEB_FAQS = [
   {
-    question: 'How much does a business website cost to develop?',
+    question: 'Why build custom code instead of using WordPress, Wix, or Webflow?',
     answer:
-      'Project pricing depends on scope, design complexity, integrations, functionality, and delivery requirements. Rather than arbitrary flat fees, Vyrobytex reviews your requirements personally and provides a transparent, tailored estimate based on your exact deliverables.',
+      'Page builders are fine for quick hobbies, but established businesses quickly outgrow them. Off-the-shelf themes load 40+ third-party scripts that ruin mobile speeds, create security vulnerabilities, and look identical to competitors. Custom code gives you sub-second load times, total design freedom, zero plugin update breakage, and higher Google rankings.',
   },
   {
-    question: 'How long does custom website development take from kickoff to launch?',
+    question: 'How do our non-technical team members update content after launch?',
     answer:
-      'Timelines typically range between three to six weeks depending on total page count, custom interaction requirements, and content readiness. Projects are executed in disciplined stages: technical discovery, UI design architecture, bespoke frontend development, cross-device testing, and launch.',
+      'We connect your custom frontend to lightweight headless CMS platforms (like Sanity, Strapi, or Decap) or structure clean JSON content files. Your marketing team edits copy, publishes blog posts, and swaps images through a clean dashboard without ever touching code.',
   },
   {
-    question: 'What essential elements should a modern business website include?',
+    question: 'What does a custom business website typically cost?',
     answer:
-      'A successful business website requires a clear value proposition, responsive mobile layout, sub-2.5-second Core Web Vitals performance, accessible semantic HTML, transparent contact channels, and an organized technical SEO foundation so customers and search engines can discover your services.',
+      'Most bespoke business sites land between $2,000 and $5,500 depending on page count, interactive features, and custom animations. We provide a guaranteed fixed milestone estimate after an initial 30-minute discovery call—no hourly runaways or surprise invoices.',
   },
   {
-    question: 'When should an established business invest in a website redesign?',
+    question: 'How long does a website project take from kickoff to launch?',
     answer:
-      'A redesign is recommended when your existing site suffers from slow mobile loading speeds, poor conversion rates, rigid templates that cannot accommodate new services, or an outdated visual presence that does not reflect your current market credibility.',
+      'Standard business builds take 3 to 5 weeks. You see interactive Figma designs in week one, test a working staging URL in week three, and launch after cross-browser verification and international SEO configuration.',
   },
 ];
 
 export const WebsiteDevelopmentPage: React.FC = () => {
   usePageSEO({
-    title: 'Custom Website Development Company | Vyrobytex',
+    title: 'Custom Website Development | Vyrobytex',
     description:
-      'Vyrobytex builds modern business websites, bespoke responsive frontends, and high-performance digital platforms for companies in the US, UK, and worldwide.',
+      'Bespoke, high-speed business websites built in React 19 and TypeScript. Sub-second load times, clean international SEO, and custom design for companies in the US, UK, and worldwide.',
     canonicalPath: '/services/website-development',
     structuredData: {
       '@context': 'https://schema.org',
@@ -56,7 +56,7 @@ export const WebsiteDevelopmentPage: React.FC = () => {
             '@id': `${SITE_URL}/#organization`,
           },
           description:
-            'Bespoke business websites engineered with modern light editorial aesthetics, high-speed responsiveness, and clean SEO architecture for international clients.',
+            'Bespoke business websites engineered in React 19, TypeScript, and modern CSS with sub-second performance, responsive editorial aesthetics, and international SEO architecture.',
           areaServed: ['United States', 'United Kingdom', 'Canada', 'Australia', 'Global'],
         },
         buildFAQSchema(WEB_FAQS),
@@ -81,20 +81,29 @@ export const WebsiteDevelopmentPage: React.FC = () => {
           </nav>
 
           <div className="service-hero-badges">
-            <Badge variant="concept">Service Discipline // 01</Badge>
+            <Badge variant="concept">Engineering Discipline // 01</Badge>
             <span className="market-pill">US • UK • Canada • Australia & Global</span>
           </div>
 
           <h1 className="service-hero-title">
-            Custom Website Development for Growing Businesses
+            Fast, Custom Websites Built to Turn Visitors into Clients
           </h1>
 
           <p className="service-hero-desc">
-            We engineer bespoke, high-performance business websites designed to build digital authority,
-            turn visitors into qualified inquiries, and provide an intuitive experience across all devices.
+            No bloated WordPress themes, no fragile plugin stacks, and no 8-second mobile load times.
+            We build clean, bespoke websites in React 19, TypeScript, and modern CSS that load in milliseconds,
+            look distinctly premium, and convert traffic into qualified inquiries.
           </p>
 
-          <div className="service-hero-actions">
+          <div className="tech-pills-row">
+            <span className="tech-pill highlight"><Code2 size={13} /> React 19 & TypeScript</span>
+            <span className="tech-pill highlight"><Gauge size={13} /> 95+ Core Web Vitals</span>
+            <span className="tech-pill"><Search size={13} /> Schema.org & Technical SEO</span>
+            <span className="tech-pill"><Layout size={13} /> Tailored Responsive CSS</span>
+            <span className="tech-pill"><Sparkles size={13} /> Micro-Interactions & GSAP</span>
+          </div>
+
+          <div className="service-hero-actions" style={{ marginTop: '2rem' }}>
             <Button
               to={ROUTES.CONTACT}
               variant="primary"
@@ -105,71 +114,67 @@ export const WebsiteDevelopmentPage: React.FC = () => {
               Request a Project Estimate
             </Button>
             <Button to={ROUTES.WORK} variant="secondary" size="lg">
-              View Concept Showcases
+              View Work Showcase
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Problems Solved & Target Audience */}
+      {/* Before / After: Generic Agency Site vs Clean Custom Code */}
       <section ref={contentRef} className="service-content-section">
         <div className="container">
           <div className="service-section-header">
-            <span className="service-section-eyebrow">Strategic Value</span>
-            <h2 className="service-section-title">Engineered to Solve Real Business Bottlenecks</h2>
+            <span className="service-section-eyebrow">The Real Difference</span>
+            <h2 className="service-section-title">The Cost of Bloated Templates</h2>
             <p className="service-section-subtext">
-              Generic website builders and cluttered themes often compromise performance and dilute brand value.
-              We build clean, tailored codebases designed specifically for business growth.
+              Most agency sites look fine on a MacBook at the agency office, but crawl on real mobile phones.
+              Here is why handcrafted code consistently outperforms off-the-shelf theme builders.
             </p>
           </div>
 
-          <div className="two-col-grid">
-            <div className="feature-box">
-              <h3 className="feature-box-title">
-                <Zap size={20} className="feature-check-icon" />
-                Problems We Solve
-              </h3>
-              <ul className="feature-check-list">
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Slow loading speeds & bloated scripts</strong> that hurt Core Web Vitals scores and increase bounce rates.</span>
+          <div className="comparison-grid">
+            <div className="comparison-card pain">
+              <span className="comparison-badge pain">Typical Page-Builder Site</span>
+              <h3 className="comparison-title">Bloated Themes & Plugin Headaches</h3>
+              <ul className="comparison-points">
+                <li className="comparison-point pain">
+                  <XCircle size={16} className="point-icon" />
+                  <span><strong>Slow 5+ second mobile loads:</strong> Heavy bloated DOM trees, 35 conflicting plugins, and endless JavaScript render blocking.</span>
                 </li>
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Rigid website templates</strong> that restrict your custom branding and cannot adapt to evolving operational needs.</span>
+                <li className="comparison-point pain">
+                  <XCircle size={16} className="point-icon" />
+                  <span><strong>Cookie-cutter templates:</strong> Visual layouts that look identical to every other generic company in your sector.</span>
                 </li>
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Poor mobile responsiveness</strong> that frustrates decision-makers browsing from tablets and smartphones.</span>
+                <li className="comparison-point pain">
+                  <XCircle size={16} className="point-icon" />
+                  <span><strong>Constant maintenance fragility:</strong> One automatic theme or security patch update breaks your forms or checkout.</span>
                 </li>
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Weak search discoverability</strong> caused by poor semantic hierarchy, missing canonical tags, or sub-optimal SEO markup.</span>
+                <li className="comparison-point pain">
+                  <XCircle size={16} className="point-icon" />
+                  <span><strong>Neglected technical SEO:</strong> Messy nested div wrappers, broken heading hierarchies, and missing structured data schemas.</span>
                 </li>
               </ul>
             </div>
 
-            <div className="feature-box">
-              <h3 className="feature-box-title">
-                <Globe size={20} className="feature-check-icon" />
-                Who Benefits Most
-              </h3>
-              <ul className="feature-check-list">
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Small & medium businesses</strong> seeking a distinctive digital identity that outperforms generic industry competitors.</span>
+            <div className="comparison-card gain">
+              <span className="comparison-badge gain">The Vyrobytex Approach</span>
+              <h3 className="comparison-title">Clean Code, Peak Speed & Direct Ownership</h3>
+              <ul className="comparison-points">
+                <li className="comparison-point gain">
+                  <CheckCircle2 size={16} className="point-icon" />
+                  <span><strong>Sub-second page speeds:</strong> Lean, tree-shaken bundles that score 95+ on Google Lighthouse and keep mobile visitors engaged.</span>
                 </li>
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Founders & venture startups</strong> launching flagship digital presences to present their solutions to investors and enterprise buyers.</span>
+                <li className="comparison-point gain">
+                  <CheckCircle2 size={16} className="point-icon" />
+                  <span><strong>Bespoke editorial design:</strong> Custom art direction that matches your brand's true caliber and commands premium pricing.</span>
                 </li>
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Professional service companies</strong> requiring structured inquiry pathways, polished presentation, and credible case study layouts.</span>
+                <li className="comparison-point gain">
+                  <CheckCircle2 size={16} className="point-icon" />
+                  <span><strong>Built-in international SEO:</strong> Automatic canonical sitemaps, JSON-LD Schema.org graphs, and optimized social share previews.</span>
                 </li>
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>International brands</strong> needing reliable technical stewardship, fast CDN delivery, and cross-browser accessibility.</span>
+                <li className="comparison-point gain">
+                  <CheckCircle2 size={16} className="point-icon" />
+                  <span><strong>100% Code & IP ownership:</strong> Clean, modular TypeScript code delivered via private Git repo with zero ongoing agency lock-in.</span>
                 </li>
               </ul>
             </div>
@@ -177,48 +182,72 @@ export const WebsiteDevelopmentPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Core Deliverables & Tech Specs */}
+      {/* Real Concrete Scenarios */}
       <section className="service-content-section">
         <div className="container">
           <div className="service-section-header">
-            <span className="service-section-eyebrow">Technical Scope</span>
-            <h2 className="service-section-title">Core Deliverables & Standards</h2>
+            <span className="service-section-eyebrow">Project Scenarios</span>
+            <h2 className="service-section-title">Website Types We Regularly Deliver</h2>
             <p className="service-section-subtext">
-              Every website is built with contemporary engineering practices, accessible markup, and clean design tokens.
+              From creative agency showcases to lead generation engines for B2B service firms.
             </p>
           </div>
 
-          <div className="specs-grid">
-            <div className="spec-card">
-              <span className="spec-card-num">01 // CODEBASE</span>
-              <h3 className="spec-card-title">Custom Frontend Architecture</h3>
-              <p className="spec-card-desc">
-                Hand-crafted React and TypeScript codebases. No bulky page builders or unneeded plugins that slow down page execution.
-              </p>
+          <div className="scenario-grid">
+            <div className="scenario-card">
+              <div>
+                <span className="scenario-tag">01 // CORPORATE & PROFESSIONAL SERVICES</span>
+                <h3 className="scenario-heading">B2B Flagship Platforms That Build Trust</h3>
+                <p className="scenario-desc">
+                  For consultancies, legal firms, and tech startups targeting US, UK, and international enterprise buyers.
+                  We craft authoritative editorial websites with clear service breakdowns, case study breakdowns, and direct team booking integrations.
+                </p>
+              </div>
+              <div className="scenario-outcome">
+                <strong>Focus:</strong> Professional authority, high-intent lead capture, and zero friction.
+              </div>
             </div>
 
-            <div className="spec-card">
-              <span className="spec-card-num">02 // PERFORMANCE</span>
-              <h3 className="spec-card-title">Core Web Vitals Optimization</h3>
-              <p className="spec-card-desc">
-                Engineered for rapid Largest Contentful Paint (LCP), minimal Cumulative Layout Shift (CLS), and fluid Interaction to Next Paint (INP).
-              </p>
+            <div className="scenario-card">
+              <div>
+                <span className="scenario-tag">02 // CREATIVE STUDIOS & ARCHITECTS</span>
+                <h3 className="scenario-heading">Portfolio Showcases with Motion & Art Direction</h3>
+                <p className="scenario-desc">
+                  For architecture studios, creative agencies, and luxury brands that demand exceptional visual polish.
+                  Smooth page transitions, buttery scroll reveals, and high-resolution media optimized to load instantly without stutter.
+                </p>
+              </div>
+              <div className="scenario-outcome">
+                <strong>Focus:</strong> Editorial typography, silky 60fps animations, and visual impact.
+              </div>
             </div>
 
-            <div className="spec-card">
-              <span className="spec-card-num">03 // SEO & STRUCTURE</span>
-              <h3 className="spec-card-title">Technical SEO & Schema</h3>
-              <p className="spec-card-desc">
-                Semantic HTML5 tags, descriptive Open Graph assets, Twitter cards, sitemap integration, and valid JSON-LD structured data.
-              </p>
+            <div className="scenario-card">
+              <div>
+                <span className="scenario-tag">03 // HIGH-CONVERTING LANDING PAGES</span>
+                <h3 className="scenario-heading">Campaign Funnels Built for Paid Traffic</h3>
+                <p className="scenario-desc">
+                  If you are driving Google Ads, LinkedIn Ads, or Meta traffic, every millisecond of latency costs real money.
+                  We build razor-sharp campaign pages with clear value framing, social proof carousels, and single-step conversion forms.
+                </p>
+              </div>
+              <div className="scenario-outcome">
+                <strong>Focus:</strong> Conversion rate optimization, sub-2.5s LCP, and zero distraction.
+              </div>
             </div>
 
-            <div className="spec-card">
-              <span className="spec-card-num">04 // RESPONSIVENESS</span>
-              <h3 className="spec-card-title">Touch-First Adaptive Layouts</h3>
-              <p className="spec-card-desc">
-                Every screen size from 320px mobile viewports to ultra-wide displays receives proportional typography and touch-optimized navigation.
-              </p>
+            <div className="scenario-card">
+              <div>
+                <span className="scenario-tag">04 // LEGACY REDESIGNS</span>
+                <h3 className="scenario-heading">Modernizing Outdated, Slow Websites</h3>
+                <p className="scenario-desc">
+                  Migrate away from clunky 7-year-old WordPress installs without losing your existing search rankings.
+                  We preserve your URL equity, implement 301 redirects where needed, and deliver a clean modern rebuild that loads 5x faster.
+                </p>
+              </div>
+              <div className="scenario-outcome">
+                <strong>Focus:</strong> SEO equity preservation, massive performance jump, and modern UX.
+              </div>
             </div>
           </div>
         </div>
@@ -228,108 +257,121 @@ export const WebsiteDevelopmentPage: React.FC = () => {
       <section className="service-content-section">
         <div className="container">
           <div className="service-section-header">
-            <span className="service-section-eyebrow">Disciplined Execution</span>
-            <h2 className="service-section-title">Development & Delivery Process</h2>
+            <span className="service-section-eyebrow">Sprint Milestones</span>
+            <h2 className="service-section-title">How Your Website Gets Built</h2>
             <p className="service-section-subtext">
-              A structured 4-phase delivery framework that keeps projects on schedule and ensures clear communication.
+              A transparent, predictable process with zero guessing.
             </p>
           </div>
 
           <div className="process-grid">
             <div className="process-step-card">
               <span className="process-step-num">01</span>
-              <h3 className="process-step-title">Technical Discovery</h3>
+              <h3 className="process-step-title">Discovery & Content Plan</h3>
               <p className="process-step-desc">
-                We review your business goals, target audience, brand assets, technical integrations, and scope requirements before writing any code.
+                We dissect your target audience, analyze competitor gaps, and structure your page architecture and conversion pathways.
               </p>
             </div>
 
             <div className="process-step-card">
               <span className="process-step-num">02</span>
-              <h3 className="process-step-title">Art Direction & Design Tokens</h3>
+              <h3 className="process-step-title">Editorial Art Direction</h3>
               <p className="process-step-desc">
-                Typography, color palettes, spacing tokens, and wireframes are assembled to create a cohesive editorial aesthetic.
+                We craft custom design concepts with bespoke typography, curated color palettes, and interactive prototypes for your review.
               </p>
             </div>
 
             <div className="process-step-card">
               <span className="process-step-num">03</span>
-              <h3 className="process-step-title">Bespoke Engineering</h3>
+              <h3 className="process-step-title">React & CSS Engineering</h3>
               <p className="process-step-desc">
-                Components are developed in modular TypeScript, incorporating responsive layouts, accessible forms, and subtle micro-interactions.
+                We write clean, strictly-typed React and CSS components with responsive layout testing across 12+ real screen viewports.
               </p>
             </div>
 
             <div className="process-step-card">
               <span className="process-step-num">04</span>
-              <h3 className="process-step-title">Quality Assurance & Launch</h3>
+              <h3 className="process-step-title">SEO Audit & Launch</h3>
               <p className="process-step-desc">
-                Full-spectrum auditing: cross-browser testing, Core Web Vitals checks, canonical URL verification, and staging deployment sign-off.
+                We configure canonical sitemaps, verify OpenGraph cards, test form submissions, and deploy to global edge CDN infrastructure.
               </p>
             </div>
           </div>
 
-          {/* International Collaboration Approach */}
+          <div className="pricing-note-box">
+            <strong>Direct Communication Guarantee:</strong> You communicate directly with founder and lead engineer Navin Chaudhary throughout the project. No junior account reps, no telephone games, and weekly live staging demos so you always know exactly what is being shipped.
+          </div>
+        </div>
+      </section>
+
+      {/* International Collaboration Card */}
+      <section className="service-content-section">
+        <div className="container">
           <div className="intl-collab-banner">
             <div className="intl-collab-grid">
               <div>
-                <span className="service-section-eyebrow">Global Delivery</span>
-                <h3 className="intl-collab-title">Working Seamlessly Across International Time Zones</h3>
+                <span className="service-section-eyebrow">Global Reach</span>
+                <h2 className="intl-collab-title">Engineered for International Markets</h2>
                 <p className="intl-collab-p">
-                  We collaborate with businesses across North America, the UK, Europe, and Australia.
-                  Our delivery model relies on clear, asynchronous progress updates, dedicated milestone reviews,
-                  and structured communication so you are always informed without friction.
+                  We frequently collaborate with business owners and marketing directors across the United States, United Kingdom, Canada, and Australia.
+                </p>
+                <p className="intl-collab-p">
+                  Our development workflow accommodates US and European business hours for sync meetings, while async video demos and GitHub milestones keep communication transparent across time zones.
                 </p>
               </div>
 
               <div>
-                <ul className="feature-check-list">
-                  <li className="feature-check-item">
-                    <CheckCircle2 size={16} className="feature-check-icon" />
-                    <span><strong>Asynchronous Sprint Updates:</strong> Walkthrough videos, transparent code commits, and staged review links.</span>
+                <span className="service-section-eyebrow">Technical Checklist</span>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '1rem' }}>
+                  Standard in Every Build
+                </h3>
+                <ul className="comparison-points">
+                  <li className="comparison-point gain">
+                    <CheckCircle2 size={16} className="point-icon" />
+                    <span>Global Edge CDN hosting with SSL on Vercel or Cloudflare</span>
                   </li>
-                  <li className="feature-check-item">
-                    <CheckCircle2 size={16} className="feature-check-icon" />
-                    <span><strong>Scheduled Live Overlap:</strong> Coordinated meeting windows for kickoff calls, sprint planning, and design feedback.</span>
+                  <li className="comparison-point gain">
+                    <CheckCircle2 size={16} className="point-icon" />
+                    <span>Google Search Console and Bing Webmaster Tools verification</span>
                   </li>
-                  <li className="feature-check-item">
-                    <CheckCircle2 size={16} className="feature-check-icon" />
-                    <span><strong>Transparent Scope Estimations:</strong> Clear proposals detailing milestones and deliverables.</span>
+                  <li className="comparison-point gain">
+                    <CheckCircle2 size={16} className="point-icon" />
+                    <span>Structured Schema.org JSON-LD for rich search engine snippets</span>
+                  </li>
+                  <li className="comparison-point gain">
+                    <CheckCircle2 size={16} className="point-icon" />
+                    <span>Accessible semantic HTML5 adhering to WCAG 2.1 standards</span>
                   </li>
                 </ul>
-
-                <div className="pricing-note-box">
-                  <strong>Pricing Policy:</strong> Project pricing depends on scope, design complexity, integrations, functionality, and delivery requirements. Contact us for a tailored estimate.
-                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Relevant Portfolio Example */}
+      {/* Relevant Project Showcase */}
       <section className="service-content-section">
         <div className="container">
           <div className="service-section-header">
-            <span className="service-section-eyebrow">Demonstrated Craft</span>
-            <h2 className="service-section-title">Selected Concept Showcase</h2>
+            <span className="service-section-eyebrow">Live Example</span>
+            <h2 className="service-section-title">Concept Showcase: Aura Studio</h2>
           </div>
 
           <div className="case-study-callout">
             <div className="case-study-callout-img-wrap">
               <img
                 src="/images/projects/aura-studio.jpg"
-                alt="Aura Studio concept showcase"
+                alt="Aura Studio luxury architectural website showcase"
                 className="case-study-callout-img"
                 loading="lazy"
               />
             </div>
             <div className="case-study-callout-body">
-              <span className="case-study-concept-badge">Concept Exploration // E-commerce & Web Architecture</span>
-              <h3 className="case-study-callout-title">Aura Studio Digital Retail</h3>
+              <span className="case-study-concept-badge">Concept Exploration // Architecture & Spatial Design</span>
+              <h3 className="case-study-callout-title">Aura Studio Brand Platform</h3>
               <p className="case-study-callout-desc">
-                An editorial web platform exploration demonstrating fluid micro-interactions, responsive typography,
-                and sub-second client-side transitions.
+                An editorial portfolio featuring fluid image zoom interactions, subtle GSAP parallax effects,
+                and sub-second page transitions tailored for an architectural practice.
               </p>
               <Button
                 to={ROUTES.WORK_DETAIL.replace(':id', 'aura-studio')}
@@ -349,10 +391,10 @@ export const WebsiteDevelopmentPage: React.FC = () => {
       <section className="service-content-section">
         <div className="container">
           <div className="service-section-header">
-            <span className="service-section-eyebrow">Direct Answers</span>
+            <span className="service-section-eyebrow">Clear Answers</span>
             <h2 className="service-section-title">Frequently Asked Questions</h2>
             <p className="service-section-subtext">
-              Direct, transparent answers to common buyer questions about website development.
+              Direct answers to common questions about pricing, timelines, and technology.
             </p>
           </div>
 
@@ -375,7 +417,7 @@ export const WebsiteDevelopmentPage: React.FC = () => {
       <section className="service-content-section">
         <div className="container">
           <div className="service-section-header">
-            <span className="service-section-eyebrow">Complementary Capabilities</span>
+            <span className="service-section-eyebrow">Other Disciplines</span>
             <h2 className="service-section-title">Explore Related Solutions</h2>
           </div>
 
@@ -386,7 +428,7 @@ export const WebsiteDevelopmentPage: React.FC = () => {
                 Custom Software <ArrowUpRight size={16} />
               </div>
               <p className="related-service-desc">
-                Bespoke web applications, internal operational tools, and customer portals.
+                Internal dashboards, client portals, and bespoke web apps built for your team.
               </p>
             </Link>
 
@@ -396,17 +438,17 @@ export const WebsiteDevelopmentPage: React.FC = () => {
                 E-commerce Solutions <ArrowUpRight size={16} />
               </div>
               <p className="related-service-desc">
-                High-converting digital storefronts, product catalogues, and checkout workflows.
+                High-converting digital storefronts, customized checkouts, and Shopify integrations.
               </p>
             </Link>
 
             <Link to={ROUTES.SERVICES_AI} className="related-service-card">
-              <span className="related-service-num">04 // INTELLIGENCE</span>
+              <span className="related-service-num">04 // AI</span>
               <div className="related-service-title">
-                AI Solutions <ArrowUpRight size={16} />
+                AI Solutions & Automation <ArrowUpRight size={16} />
               </div>
               <p className="related-service-desc">
-                Practical workflow automation pipelines and knowledge-grounded AI features.
+                Grounded document search assistants, lead qualification bots, and workflow pipelines.
               </p>
             </Link>
           </div>

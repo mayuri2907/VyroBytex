@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, CheckCircle2, ShoppingBag, TrendingUp } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2, XCircle, ShoppingBag, CreditCard, Zap, ShieldCheck, Globe2 } from 'lucide-react';
 import { ROUTES } from '../../lib/routes';
 import { Badge } from '../../components/ui/Badge';
 import { Button } from '../../components/ui/Button';
@@ -12,32 +12,32 @@ import './ServiceDetailPage.css';
 
 const ECOMMERCE_FAQS = [
   {
-    question: 'What factors determine the cost of developing a custom e-commerce website?',
+    question: 'Why build headless or custom e-commerce instead of a standard Shopify theme?',
     answer:
-      'Project pricing depends on scope, design complexity, integrations, functionality, and delivery requirements. Contact us for a tailored estimate. Key cost factors include product catalogue volume, custom variant configurators, third-party payment gateway setups, international multi-currency handling, and transactional email automation.',
+      'Standard themes quickly get dragged down by 15–20 installed Shopify apps, which slows mobile load times down to 5+ seconds and destroys conversion rates. Headless architecture separates your fast frontend (React/Next.js) from your Shopify backend, delivering instant sub-second page flips, custom product configurators, and complete design freedom.',
   },
   {
-    question: 'Which features are essential for a modern high-converting online store?',
+    question: 'How do we manage products, inventory, and order fulfillment?',
     answer:
-      'Essential features include instant client-side product filtering, responsive mobile-first navigation, frictionless drawer carts, transparent shipping and tax calculators, multi-currency options for international buyers, and automated order confirmations.',
+      'You continue using your familiar Shopify or Stripe dashboard. Adding products, managing discount codes, fulfilling orders, and tracking inventory remains unchanged. Only the customer-facing frontend is custom-engineered for speed and brand uniqueness.',
   },
   {
-    question: 'How can checkout friction be reduced to improve e-commerce conversion rates?',
+    question: 'What does a custom e-commerce store project cost?',
     answer:
-      'Friction is minimized by eliminating mandatory multi-step account creation, offering express payment methods (Apple Pay, Google Pay, Stripe), preventing jarring full-page reloads with instant drawer carts, and keeping checkout form fields to an absolute minimum.',
+      'Storefront builds typically range from $3,000 to $7,500 depending on catalog size, custom product bundle builders, and international checkout requirements. We provide a guaranteed milestone estimate after reviewing your SKU structure and design goals.',
   },
   {
-    question: 'How should an established brand or retailer plan a new e-commerce build?',
+    question: 'Do you support international currencies and localized checkout?',
     answer:
-      'Start by cataloguing your SKU inventory and product attributes, selecting your preferred payment processors and fulfillment methods, defining your visual art direction, and ensuring your technical specifications prioritize fast mobile loading and reliable customer data privacy.',
+      'Yes. We configure automatic geolocation detection, multi-currency price rendering (USD, GBP, EUR, CAD, AUD), localized tax/VAT handling, and native regional payment methods including Apple Pay, Google Pay, and Klarna.',
   },
 ];
 
 export const EcommerceDevelopmentPage: React.FC = () => {
   usePageSEO({
-    title: 'E-commerce Development Company | Vyrobytex',
+    title: 'Custom E-commerce Store Development | Vyrobytex',
     description:
-      'Vyrobytex engineers custom digital storefronts, high-converting product experiences, and scalable e-commerce platforms for online brands in the US, UK, and worldwide.',
+      'High-speed digital storefronts, custom Shopify setups, and headless e-commerce built for conversion and scalability in the US, UK, and worldwide.',
     canonicalPath: '/services/ecommerce-development',
     structuredData: {
       '@context': 'https://schema.org',
@@ -77,24 +77,33 @@ export const EcommerceDevelopmentPage: React.FC = () => {
             <span className="service-breadcrumbs-sep">/</span>
             <Link to={ROUTES.SERVICES}>Services</Link>
             <span className="service-breadcrumbs-sep">/</span>
-            <span aria-current="page">E-commerce Development</span>
+            <span aria-current="page">E-commerce Solutions</span>
           </nav>
 
           <div className="service-hero-badges">
-            <Badge variant="concept">Service Discipline // 03</Badge>
+            <Badge variant="concept">Engineering Discipline // 03</Badge>
             <span className="market-pill">US • UK • Canada • Australia & Global</span>
           </div>
 
           <h1 className="service-hero-title">
-            Custom E-commerce Development for Online Brands & Retailers
+            Fast Storefronts, Zero Lag, and Checkout Flows Built to Sell
           </h1>
 
           <p className="service-hero-desc">
-            We engineer tailored digital storefronts and commerce platforms designed to highlight product value,
-            eliminate checkout abandonment, and convert casual visitors into loyal repeat customers.
+            Sluggish checkout kills sales. Every 100ms delay on mobile drops conversion rates by up to 7%.
+            We build high-speed headless stores and tailored Shopify experiences that handle real traffic spikes,
+            render products instantly, and turn more browsers into paying customers.
           </p>
 
-          <div className="service-hero-actions">
+          <div className="tech-pills-row">
+            <span className="tech-pill highlight"><ShoppingBag size={13} /> Shopify Storefront API</span>
+            <span className="tech-pill highlight"><Zap size={13} /> Next.js / React 19 Frontend</span>
+            <span className="tech-pill"><CreditCard size={13} /> Stripe & 1-Click Express Pay</span>
+            <span className="tech-pill"><Globe2 size={13} /> Multi-Currency & Localized Tax</span>
+            <span className="tech-pill"><ShieldCheck size={13} /> PCI-DSS Compliant Security</span>
+          </div>
+
+          <div className="service-hero-actions" style={{ marginTop: '2rem' }}>
             <Button
               to={ROUTES.CONTACT}
               variant="primary"
@@ -102,74 +111,70 @@ export const EcommerceDevelopmentPage: React.FC = () => {
               icon={<ArrowUpRight size={18} />}
               iconPosition="up-right"
             >
-              Discuss Your E-commerce Project
+              Discuss Your Store Build
             </Button>
             <Button to={ROUTES.WORK} variant="secondary" size="lg">
-              Explore Commerce Concepts
+              Explore Storefront Concepts
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Problems Solved & Who Benefits */}
+      {/* Before / After: Bloated Store vs Clean Custom Storefront */}
       <section ref={contentRef} className="service-content-section">
         <div className="container">
           <div className="service-section-header">
-            <span className="service-section-eyebrow">Commerce Optimization</span>
-            <h2 className="service-section-title">Engineered to Drive Transactional Momentum</h2>
+            <span className="service-section-eyebrow">The Real Problem</span>
+            <h2 className="service-section-title">Why Generic Store Themes Bleed Conversions</h2>
             <p className="service-section-subtext">
-              Clunky generic store templates and slow mobile checkout flows destroy customer trust.
-              We craft commerce experiences that feel instantaneous and effortless.
+              Store owners stack 25 third-party Shopify apps for reviews, upsells, and popups.
+              The result is a sluggish 6-second mobile nightmare where frustrated shoppers abandon carts.
             </p>
           </div>
 
-          <div className="two-col-grid">
-            <div className="feature-box">
-              <h3 className="feature-box-title">
-                <TrendingUp size={20} className="feature-check-icon" />
-                Problems We Solve
-              </h3>
-              <ul className="feature-check-list">
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Cart abandonment spikes</strong> triggered by sluggish page reloads and complicated multi-step checkouts.</span>
+          <div className="comparison-grid">
+            <div className="comparison-card pain">
+              <span className="comparison-badge pain">The App-Bloated Theme Trap</span>
+              <h3 className="comparison-title">Laggy Carts & Frustrating Friction</h3>
+              <ul className="comparison-points">
+                <li className="comparison-point pain">
+                  <XCircle size={16} className="point-icon" />
+                  <span><strong>5+ second mobile load times:</strong> 20 installed app scripts fighting for the browser main thread, causing severe cart abandonment.</span>
                 </li>
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Generic storefront templates</strong> that look identical to competitors and fail to communicate premium product craftsmanship.</span>
+                <li className="comparison-point pain">
+                  <XCircle size={16} className="point-icon" />
+                  <span><strong>Jarring full-page reloads:</strong> Clicking "Add to Cart" triggers full page refresh or broken sliding drawers on mobile Safari.</span>
                 </li>
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Clunky mobile variant pickers</strong> that frustrate smartphone shoppers trying to select sizes, colors, or bundles.</span>
+                <li className="comparison-point pain">
+                  <XCircle size={16} className="point-icon" />
+                  <span><strong>$300–$600/month recurring app fees:</strong> Endless monthly app subscriptions just to get basic variant swatches and bundle discounts.</span>
                 </li>
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Slow catalogue filtering</strong> that forces customers to wait several seconds between category clicks.</span>
+                <li className="comparison-point pain">
+                  <XCircle size={16} className="point-icon" />
+                  <span><strong>Generic checkout experience:</strong> Clunky form fields that force buyers to type shipping addresses manually instead of using Apple Pay.</span>
                 </li>
               </ul>
             </div>
 
-            <div className="feature-box">
-              <h3 className="feature-box-title">
-                <ShoppingBag size={20} className="feature-check-icon" />
-                Who Benefits Most
-              </h3>
-              <ul className="feature-check-list">
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Direct-to-consumer (DTC) brands</strong> seeking an editorial, premium shopping experience tailored to their visual identity.</span>
+            <div className="comparison-card gain">
+              <span className="comparison-badge gain">The Vyrobytex Approach</span>
+              <h3 className="comparison-title">Sub-Second Speed & Frictionless Checkout</h3>
+              <ul className="comparison-points">
+                <li className="comparison-point gain">
+                  <CheckCircle2 size={16} className="point-icon" />
+                  <span><strong>Sub-second product pages:</strong> Instant client-side routing and optimized image CDNs that keep mobile shoppers flowing smoothly.</span>
                 </li>
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Specialty retail businesses</strong> transitioning from brick-and-mortar storefronts to international digital commerce.</span>
+                <li className="comparison-point gain">
+                  <CheckCircle2 size={16} className="point-icon" />
+                  <span><strong>Instant drawer cart:</strong> Fluid slide-out cart with real-time inventory validation, free shipping progress bars, and zero reload delay.</span>
                 </li>
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>B2B wholesale merchants</strong> requiring structured catalogue browsing, custom quote workflows, and bulk inquiry paths.</span>
+                <li className="comparison-point gain">
+                  <CheckCircle2 size={16} className="point-icon" />
+                  <span><strong>1-Click express checkout:</strong> Seamless Apple Pay, Google Pay, and Shop Pay integration that converts mobile traffic in 2 taps.</span>
                 </li>
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Growing product companies</strong> expanding sales across North America, the UK, Europe, and Australia.</span>
+                <li className="comparison-point gain">
+                  <CheckCircle2 size={16} className="point-icon" />
+                  <span><strong>Native custom features:</strong> Custom bundle builders, color swatches, and size guides coded cleanly into the core theme without monthly fees.</span>
                 </li>
               </ul>
             </div>
@@ -177,137 +182,160 @@ export const EcommerceDevelopmentPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Core Deliverables & Technical Scope */}
+      {/* Real Concrete Scenarios */}
       <section className="service-content-section">
         <div className="container">
           <div className="service-section-header">
-            <span className="service-section-eyebrow">Technical Scope</span>
-            <h2 className="service-section-title">Core E-commerce Deliverables</h2>
+            <span className="service-section-eyebrow">Commerce Scenarios</span>
+            <h2 className="service-section-title">E-Commerce Experiences We Build</h2>
             <p className="service-section-subtext">
-              Every commerce platform is built for speed, secure transactional data, and intuitive navigation.
+              Engineered to increase Average Order Value (AOV) and reduce cart drop-off.
             </p>
           </div>
 
-          <div className="specs-grid">
-            <div className="spec-card">
-              <span className="spec-card-num">01 // FRONTEND</span>
-              <h3 className="spec-card-title">Bespoke Storefront Interface</h3>
-              <p className="spec-card-desc">
-                Editorial layouts, responsive product grids, micro-interactions, and instant client-side category filtering.
-              </p>
+          <div className="scenario-grid">
+            <div className="scenario-card">
+              <div>
+                <span className="scenario-tag">01 // DTC BRAND STOREFRONTS</span>
+                <h3 className="scenario-heading">High-End Direct-to-Consumer Flagships</h3>
+                <p className="scenario-desc">
+                  For premium lifestyle, fashion, wellness, and consumer electronics brands.
+                  Editorial storytelling, high-resolution lookbooks, and instant product switching that command higher price points.
+                </p>
+              </div>
+              <div className="scenario-outcome">
+                <strong>Focus:</strong> Brand prestige, visual art direction, and seamless mobile purchasing.
+              </div>
             </div>
 
-            <div className="spec-card">
-              <span className="spec-card-num">02 // TRANSACTIONS</span>
-              <h3 className="spec-card-title">Payment Gateway Integrations</h3>
-              <p className="spec-card-desc">
-                Secure checkout integrations with trusted international payment providers (Stripe, Apple Pay, Google Pay).
-              </p>
+            <div className="scenario-card">
+              <div>
+                <span className="scenario-tag">02 // CUSTOM PRODUCT CONFIGURATORS</span>
+                <h3 className="scenario-heading">Interactive Bundle & Customizer Engines</h3>
+                <p className="scenario-desc">
+                  Allow customers to mix-and-match bundles, choose custom engraving, or configure bespoke orders with real-time price calculation
+                  and visual preview before checkout.
+                </p>
+              </div>
+              <div className="scenario-outcome">
+                <strong>Focus:</strong> Higher Average Order Value (AOV) and higher customer engagement.
+              </div>
             </div>
 
-            <div className="spec-card">
-              <span className="spec-card-num">03 // MERCHANDISING</span>
-              <h3 className="spec-card-title">Interactive Product Detail Pages</h3>
-              <p className="spec-card-desc">
-                High-definition image galleries, fluid variant selectors, stock badge indicators, and instant drawer cart addition.
-              </p>
+            <div className="scenario-card">
+              <div>
+                <span className="scenario-tag">03 // HIGH-VOLUME FLASH SALES</span>
+                <h3 className="scenario-heading">Stores Engineered for Black Friday Spikes</h3>
+                <p className="scenario-desc">
+                  Static-first edge architecture built to withstand massive viral traffic surges from influencer drops,
+                  TikTok viral campaigns, and Black Friday sales without crashing or slowing down.
+                </p>
+              </div>
+              <div className="scenario-outcome">
+                <strong>Focus:</strong> 100% uptime under extreme load with zero checkout latency.
+              </div>
             </div>
 
-            <div className="spec-card">
-              <span className="spec-card-num">04 // ANALYTICS</span>
-              <h3 className="spec-card-title">Conversion & Event Tracking</h3>
-              <p className="spec-card-desc">
-                Clean event tracking hooks for product views, cart additions, and checkout steps without compromising page load speeds.
-              </p>
+            <div className="scenario-card">
+              <div>
+                <span className="scenario-tag">04 // GLOBAL LOCALIZATION</span>
+                <h3 className="scenario-heading">Multi-Currency & Regional Tax Optimization</h3>
+                <p className="scenario-desc">
+                  Sell across the US, UK, Canada, and Europe seamlessly. Dynamic currency switching, automatic VAT/sales tax calculation,
+                  and localized regional payment options (Klarna, iDEAL, Bancontact).
+                </p>
+              </div>
+              <div className="scenario-outcome">
+                <strong>Focus:</strong> International conversion optimization and cross-border expansion.
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Development & International Process */}
+      {/* Delivery Process */}
       <section className="service-content-section">
         <div className="container">
           <div className="service-section-header">
-            <span className="service-section-eyebrow">Delivery Framework</span>
-            <h2 className="service-section-title">How We Build Your Storefront</h2>
+            <span className="service-section-eyebrow">Store Delivery Sprint</span>
+            <h2 className="service-section-title">How We Build and Launch Your Store</h2>
             <p className="service-section-subtext">
-              A structured 4-phase process focused on conversion optimization and technical stability.
+              From product catalog structuring to payment gateway testing.
             </p>
           </div>
 
           <div className="process-grid">
             <div className="process-step-card">
               <span className="process-step-num">01</span>
-              <h3 className="process-step-title">Catalogue & Flow Audit</h3>
+              <h3 className="process-step-title">Catalog & SKU Plan</h3>
               <p className="process-step-desc">
-                Analyzing SKU structures, product variant combinations, payment requirements, and customer purchasing journeys.
+                We organize your product variants, categories, inventory sync rules, and checkout requirements before design begins.
               </p>
             </div>
 
             <div className="process-step-card">
               <span className="process-step-num">02</span>
-              <h3 className="process-step-title">Interactive Wireframes</h3>
+              <h3 className="process-step-title">Bespoke Storefront UI</h3>
               <p className="process-step-desc">
-                Designing mobile-first product detail pages, instant cart drawers, and frictionless checkout mockups.
+                We design custom product detail pages, collection filters, and drawer cart interactions optimized for mobile conversion.
               </p>
             </div>
 
             <div className="process-step-card">
               <span className="process-step-num">03</span>
-              <h3 className="process-step-title">Custom Development</h3>
+              <h3 className="process-step-title">Frontend Engineering</h3>
               <p className="process-step-desc">
-                Building responsive frontend components, setting up payment gateway APIs, and implementing conversion hooks.
+                We code clean React components, integrate Shopify Storefront API or Stripe, and test instant cart drawer transitions.
               </p>
             </div>
 
             <div className="process-step-card">
               <span className="process-step-num">04</span>
-              <h3 className="process-step-title">Pre-Launch Testing</h3>
+              <h3 className="process-step-title">Testing & Go-Live</h3>
               <p className="process-step-desc">
-                Rigorous end-to-end checkout testing, mobile performance audits, SSL encryption validation, and live payment verification.
+                We run live test transactions, verify email receipts, configure Google Analytics 4 e-commerce events, and launch.
               </p>
             </div>
           </div>
 
-          {/* Pricing Disclaimer Box */}
           <div className="pricing-note-box">
-            <strong>Transparent Pricing Notice:</strong> Project pricing depends on scope, design complexity, integrations, functionality, and delivery requirements. Contact us for a tailored estimate. Note that payment processor fees, domain registrations, and third-party SaaS subscriptions involve separate costs.
+            <strong>Guaranteed Conversion Architecture:</strong> Every build includes frictionless express checkout, automated transactional email templates, and Google Merchant Center / Schema product markup as standard.
           </div>
         </div>
       </section>
 
-      {/* Relevant Concept Showcase */}
+      {/* Relevant Project Showcase */}
       <section className="service-content-section">
         <div className="container">
           <div className="service-section-header">
             <span className="service-section-eyebrow">Commerce Prototype</span>
-            <h2 className="service-section-title">Concept Showcase: Aura Studio</h2>
+            <h2 className="service-section-title">Concept Showcase: E-Commerce Architecture</h2>
           </div>
 
           <div className="case-study-callout">
             <div className="case-study-callout-img-wrap">
               <img
-                src="/images/projects/aura-studio.jpg"
-                alt="Aura Studio concept showcase"
+                src="/images/projects/nexus-core.jpg"
+                alt="E-commerce digital storefront interface showcase"
                 className="case-study-callout-img"
                 loading="lazy"
               />
             </div>
             <div className="case-study-callout-body">
-              <span className="case-study-concept-badge">Concept Exploration // Editorial Commerce Experience</span>
-              <h3 className="case-study-callout-title">Aura Studio Luxury E-Commerce</h3>
+              <span className="case-study-concept-badge">Concept Exploration // High-Volume Digital Commerce</span>
+              <h3 className="case-study-callout-title">Modern Digital Storefront</h3>
               <p className="case-study-callout-desc">
-                An editorial direct-to-consumer store concept demonstrating instantaneous drawer carts, fluid product previews,
-                and zero Cumulative Layout Shift across mobile and desktop.
+                A streamlined e-commerce concept featuring instant client-side product filtering, slide-out drawer cart,
+                and seamless multi-currency price conversion for international retail shoppers.
               </p>
               <Button
-                to={ROUTES.WORK_DETAIL.replace(':id', 'aura-studio')}
+                to={ROUTES.WORK}
                 variant="secondary"
                 size="sm"
                 icon={<ArrowUpRight size={14} />}
                 iconPosition="up-right"
               >
-                Inspect Case Study
+                Explore Projects
               </Button>
             </div>
           </div>
@@ -321,7 +349,7 @@ export const EcommerceDevelopmentPage: React.FC = () => {
             <span className="service-section-eyebrow">Direct Answers</span>
             <h2 className="service-section-title">Frequently Asked Questions</h2>
             <p className="service-section-subtext">
-              Direct, factual answers for retailers and brands planning an e-commerce platform.
+              Direct answers to questions regarding headless setups, inventory management, and pricing.
             </p>
           </div>
 
@@ -344,7 +372,7 @@ export const EcommerceDevelopmentPage: React.FC = () => {
       <section className="service-content-section">
         <div className="container">
           <div className="service-section-header">
-            <span className="service-section-eyebrow">Complementary Capabilities</span>
+            <span className="service-section-eyebrow">Explore Other Disciplines</span>
             <h2 className="service-section-title">Explore Related Solutions</h2>
           </div>
 
@@ -355,7 +383,7 @@ export const EcommerceDevelopmentPage: React.FC = () => {
                 Website Development <ArrowUpRight size={16} />
               </div>
               <p className="related-service-desc">
-                Custom marketing websites, creative portfolio presences, and corporate flagship sites.
+                Fast marketing websites, corporate flagship platforms, and bespoke React interfaces.
               </p>
             </Link>
 
@@ -365,17 +393,17 @@ export const EcommerceDevelopmentPage: React.FC = () => {
                 Custom Software <ArrowUpRight size={16} />
               </div>
               <p className="related-service-desc">
-                Bespoke web applications, internal operational tools, and customer portals.
+                Internal dashboards, client portals, and bespoke web apps built for your team.
               </p>
             </Link>
 
             <Link to={ROUTES.SERVICES_AI} className="related-service-card">
-              <span className="related-service-num">04 // INTELLIGENCE</span>
+              <span className="related-service-num">04 // AI</span>
               <div className="related-service-title">
-                AI Solutions <ArrowUpRight size={16} />
+                AI Solutions & Automation <ArrowUpRight size={16} />
               </div>
               <p className="related-service-desc">
-                Practical workflow automation pipelines and knowledge-grounded AI features.
+                Grounded document search assistants, lead qualification bots, and workflow pipelines.
               </p>
             </Link>
           </div>

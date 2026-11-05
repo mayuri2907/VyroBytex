@@ -65,6 +65,7 @@ export async function submitToIndexNow(
             'Content-Type': 'application/json; charset=utf-8',
           },
           body: JSON.stringify(payload),
+          signal: AbortSignal.timeout(8000),
         });
 
         const status = response.status;
@@ -131,7 +132,15 @@ export default async function handler(req: any, res: any) {
     }
 
     const providedToken = authHeader.slice(7).trim();
-    const serverSecret = process.env.INDEXNOW_SECRET || DEFAULT_INDEXNOW_SECRET;
+    const serverSecret = process.env.INDEXNOW_SECRET || (process.env.NODE_ENV !== 'production' ? DEFAULT_INDEXNOW_SECRET : '');
+
+    if (!serverSecret && process.env.NODE_ENV === 'production') {
+      console.error('[IndexNow Security Error]: INDEXNOW_SECRET is not configured in production environment.');
+      return res.status(500).json({
+        success: false,
+        error: 'Server Misconfiguration: Authentication secret not configured in production environment.',
+      });
+    }
 
     if (!timingSafeEqualStr(providedToken, serverSecret)) {
       return res.status(401).json({

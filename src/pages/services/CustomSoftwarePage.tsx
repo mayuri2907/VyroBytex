@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, CheckCircle2, Cpu, Database } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2, XCircle, Terminal, Database, Server, Lock, Layers } from 'lucide-react';
 import { ROUTES } from '../../lib/routes';
 import { Badge } from '../../components/ui/Badge';
 import { Button } from '../../components/ui/Button';
@@ -12,32 +12,32 @@ import './ServiceDetailPage.css';
 
 const SOFTWARE_FAQS = [
   {
-    question: 'When should a growing business invest in custom software?',
+    question: 'Who owns the source code and intellectual property?',
     answer:
-      'A business should invest in custom software when off-the-shelf tools force disjointed manual workarounds, require repetitive spreadsheet re-entry, or impose escalating per-user subscription fees that limit your ability to scale team output efficiently.',
+      'You own 100% of the code, database schemas, and intellectual property. When we complete the project, repository access, deployment accounts, and technical documentation are handed directly to your company with zero licensing fees or vendor lock-in.',
   },
   {
-    question: 'How does custom software compare to commercial off-the-shelf SaaS?',
+    question: 'How do you decide between custom software vs. buying off-the-shelf SaaS?',
     answer:
-      'Off-the-shelf SaaS provides generic out-of-the-box features with recurring licensing fees and rigid workflows. Custom software is engineered around your exact business requirements and owned by your organization. Note that hosting, third-party services, APIs, and ongoing maintenance involve separate infrastructure costs.',
+      'If an existing SaaS tool covers 90% of your workflow for a reasonable price, you should buy it. But when you are paying $40/user/month across 30 staff members while duct-taping spreadsheets together to bridge missing features, custom software pays for itself quickly while becoming an asset on your balance sheet.',
   },
   {
-    question: 'What factors determine the cost of custom software development?',
+    question: 'Can our internal engineers maintain and extend the code later?',
     answer:
-      'Project pricing depends on scope, design complexity, integrations, functionality, and delivery requirements. Contact us for a tailored estimate. Key factors include data model complexity, user role permissions (RBAC), external API integrations, real-time sync needs, and cloud infrastructure architecture.',
+      'Yes. We write strictly-typed TypeScript, clean PostgreSQL schemas, and modular React components following industry standards. Every project ships with complete setup instructions, API specs, and clean Git commits so any competent developer can jump right in.',
   },
   {
-    question: 'Can custom software integrate with existing third-party business systems?',
+    question: 'What does custom software development typically cost?',
     answer:
-      'Yes. We build custom software with robust REST and GraphQL API connectors designed to synchronize data securely with existing CRMs, ERPs, accounting software, and external communication channels like Slack or email.',
+      'Targeted internal tools, portals, or automation MVPs typically range from $3,500 to $8,500 depending on database schema depth, authentication roles (RBAC), and third-party integrations. We work in fixed-price milestones so you always know the exact cost before work begins.',
   },
 ];
 
 export const CustomSoftwarePage: React.FC = () => {
   usePageSEO({
-    title: 'Custom Software Development Company | Vyrobytex',
+    title: 'Custom Software & Internal Tools Development | Vyrobytex',
     description:
-      'Vyrobytex designs and engineers custom business software, internal operations portals, web applications, and API integrations for growing companies in the US, UK, and worldwide.',
+      'Bespoke web applications, client portals, internal operations dashboards, and database pipelines built around your exact business workflows in the US, UK, and worldwide.',
     canonicalPath: '/services/custom-software',
     structuredData: {
       '@context': 'https://schema.org',
@@ -81,20 +81,28 @@ export const CustomSoftwarePage: React.FC = () => {
           </nav>
 
           <div className="service-hero-badges">
-            <Badge variant="concept">Service Discipline // 02</Badge>
+            <Badge variant="concept">Engineering Discipline // 02</Badge>
             <span className="market-pill">US • UK • Canada • Australia & Global</span>
           </div>
 
           <h1 className="service-hero-title">
-            Custom Software Development for Efficient Business Operations
+            Custom Software Built Around How Your Business Actually Runs
           </h1>
 
           <p className="service-hero-desc">
-            We build tailored web applications, internal tools, customer portals, and API integrations
-            engineered around your team’s exact workflows and business objectives.
+            When off-the-shelf SaaS forces your team into messy spreadsheets and manual workarounds, we build the exact tool you need.
+            Bespoke client portals, operational dashboards, and backend automations engineered to scale your operations without per-seat fees.
           </p>
 
-          <div className="service-hero-actions">
+          <div className="tech-pills-row">
+            <span className="tech-pill highlight"><Terminal size={13} /> TypeScript & Node.js</span>
+            <span className="tech-pill highlight"><Database size={13} /> PostgreSQL & Supabase</span>
+            <span className="tech-pill"><Layers size={13} /> React 19 Frontend</span>
+            <span className="tech-pill"><Lock size={13} /> Role-Based Auth (RBAC)</span>
+            <span className="tech-pill"><Server size={13} /> REST & Webhook Pipelines</span>
+          </div>
+
+          <div className="service-hero-actions" style={{ marginTop: '2rem' }}>
             <Button
               to={ROUTES.CONTACT}
               variant="primary"
@@ -102,73 +110,70 @@ export const CustomSoftwarePage: React.FC = () => {
               icon={<ArrowUpRight size={18} />}
               iconPosition="up-right"
             >
-              Discuss Your Software Project
+              Discuss Your Software Needs
             </Button>
             <Button to={ROUTES.WORK} variant="secondary" size="lg">
-              Explore Software Concepts
+              Explore Architecture Demos
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Problems Solved & Who Benefits */}
+      {/* Before / After: Generic SaaS vs Tailored Software */}
       <section ref={contentRef} className="service-content-section">
         <div className="container">
           <div className="service-section-header">
-            <span className="service-section-eyebrow">Operational Focus</span>
-            <h2 className="service-section-title">Built Around Your Exact Workflows</h2>
+            <span className="service-section-eyebrow">The Tradeoff</span>
+            <h2 className="service-section-title">The SaaS Sprawl & Spreadsheet Ceiling</h2>
             <p className="service-section-subtext">
-              When commercial software cannot fit your business logic, custom web applications eliminate operational bottlenecks.
+              Generic software either charges exorbitant per-seat monthly fees for bloated features, or lacks the exact custom workflow your team needs.
+              Here is what happens when you build software that belongs to you.
             </p>
           </div>
 
-          <div className="two-col-grid">
-            <div className="feature-box">
-              <h3 className="feature-box-title">
-                <Cpu size={20} className="feature-check-icon" />
-                Problems We Solve
-              </h3>
-              <ul className="feature-check-list">
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Disjointed SaaS tools</strong> requiring manual data re-entry and prone to costly synchronization errors.</span>
+          <div className="comparison-grid">
+            <div className="comparison-card pain">
+              <span className="comparison-badge pain">The SaaS & Spreadsheet Trap</span>
+              <h3 className="comparison-title">Duct-Taped Tools & Fragmented Data</h3>
+              <ul className="comparison-points">
+                <li className="comparison-point pain">
+                  <XCircle size={16} className="point-icon" />
+                  <span><strong>Escalating per-seat subscription bills:</strong> Paying $50/user/month across 4 different platforms just to handle basic tasks.</span>
                 </li>
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Spreadsheet gridlock</strong> where critical operational metrics are trapped in vulnerable, unversioned sheets.</span>
+                <li className="comparison-point pain">
+                  <XCircle size={16} className="point-icon" />
+                  <span><strong>Fragile Zapier & Airtable links:</strong> One person renames a column or updates a field, and three automated pipelines silently fail.</span>
                 </li>
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Escalating per-seat software licensing</strong> that taxes business expansion without providing tailored utility.</span>
+                <li className="comparison-point pain">
+                  <XCircle size={16} className="point-icon" />
+                  <span><strong>Manual double-entry between apps:</strong> Staff wasting hours re-typing customer data from email into CRMs and invoicing tools.</span>
                 </li>
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Lack of dedicated client portals</strong>, creating customer frustration over project status and documentation tracking.</span>
+                <li className="comparison-point pain">
+                  <XCircle size={16} className="point-icon" />
+                  <span><strong>Zero competitive edge:</strong> You are forced to operate exactly like everyone else using the same generic commercial tools.</span>
                 </li>
               </ul>
             </div>
 
-            <div className="feature-box">
-              <h3 className="feature-box-title">
-                <Database size={20} className="feature-check-icon" />
-                Who Benefits Most
-              </h3>
-              <ul className="feature-check-list">
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Operations-driven businesses</strong> needing automated pipelines to handle orders, project tracking, or reporting.</span>
+            <div className="comparison-card gain">
+              <span className="comparison-badge gain">The Vyrobytex Approach</span>
+              <h3 className="comparison-title">Dedicated Architecture & Asset Ownership</h3>
+              <ul className="comparison-points">
+                <li className="comparison-point gain">
+                  <CheckCircle2 size={16} className="point-icon" />
+                  <span><strong>Tailored to your exact workflow:</strong> No unused clutter, no weird workarounds. The software fits how your team already operates.</span>
                 </li>
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Service firms and agencies</strong> looking to provide clients with secure, branded access to deliverables and dashboards.</span>
+                <li className="comparison-point gain">
+                  <CheckCircle2 size={16} className="point-icon" />
+                  <span><strong>Zero per-seat licensing fees:</strong> Add 5 or 500 team members without paying a dime extra in recurring software seat licenses.</span>
                 </li>
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Growing startups</strong> building proprietary business capabilities to maintain a competitive market advantage.</span>
+                <li className="comparison-point gain">
+                  <CheckCircle2 size={16} className="point-icon" />
+                  <span><strong>Single source of truth:</strong> Clean relational PostgreSQL database with automatic audit logs, backups, and secure access controls.</span>
                 </li>
-                <li className="feature-check-item">
-                  <CheckCircle2 size={16} className="feature-check-icon" />
-                  <span><strong>Enterprises modernizing legacy tools</strong> into responsive, secure, cloud-native web applications.</span>
+                <li className="comparison-point gain">
+                  <CheckCircle2 size={16} className="point-icon" />
+                  <span><strong>Permanent enterprise IP:</strong> The software is an owned balance-sheet asset that increases the enterprise valuation of your company.</span>
                 </li>
               </ul>
             </div>
@@ -176,128 +181,151 @@ export const CustomSoftwarePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Deliverables & Technology Scope */}
+      {/* Real Concrete Scenarios */}
       <section className="service-content-section">
         <div className="container">
           <div className="service-section-header">
-            <span className="service-section-eyebrow">Engineering Capabilities</span>
-            <h2 className="service-section-title">Core Software Deliverables</h2>
+            <span className="service-section-eyebrow">Practical Applications</span>
+            <h2 className="service-section-title">Systems We Build for Growing Businesses</h2>
             <p className="service-section-subtext">
-              Full-stack applications engineered with strict typing, secure authorization, and modern database structures.
+              Real internal applications that eliminate human error and streamline daily operations.
             </p>
           </div>
 
-          <div className="specs-grid">
-            <div className="spec-card">
-              <span className="spec-card-num">01 // ARCHITECTURE</span>
-              <h3 className="spec-card-title">Full-Stack Web Applications</h3>
-              <p className="spec-card-desc">
-                Modular React/TypeScript frontends paired with scalable Node.js serverless functions, REST APIs, and structured data stores.
-              </p>
+          <div className="scenario-grid">
+            <div className="scenario-card">
+              <div>
+                <span className="scenario-tag">01 // CLIENT PORTALS</span>
+                <h3 className="scenario-heading">Branded Client Hubs & Document Workflows</h3>
+                <p className="scenario-desc">
+                  Give your high-value clients a sleek self-service portal to review deliverable status, securely upload confidential files,
+                  approve quotes, and view invoices without endless email threads.
+                </p>
+              </div>
+              <div className="scenario-outcome">
+                <strong>Result:</strong> Drastic reduction in status check emails and a dramatically more professional client experience.
+              </div>
             </div>
 
-            <div className="spec-card">
-              <span className="spec-card-num">02 // DATA & SECURITY</span>
-              <h3 className="spec-card-title">Role-Based Access Control (RBAC)</h3>
-              <p className="spec-card-desc">
-                Granular permission tiers, encrypted session management, and secure authorization gates protecting company and client data.
-              </p>
+            <div className="scenario-card">
+              <div>
+                <span className="scenario-tag">02 // OPERATIONS DASHBOARDS</span>
+                <h3 className="scenario-heading">Internal Ops & Job Dispatch Dashboards</h3>
+                <p className="scenario-desc">
+                  Manage field jobs, technician scheduling, order statuses, and team capacity in real time.
+                  Role-based permissions ensure managers see financial rollups while technicians only see their daily tasks.
+                </p>
+              </div>
+              <div className="scenario-outcome">
+                <strong>Result:</strong> Centralized real-time visibility across the entire operational pipeline.
+              </div>
             </div>
 
-            <div className="spec-card">
-              <span className="spec-card-num">03 // CONNECTIVITY</span>
-              <h3 className="spec-card-title">API & Webhook Integrations</h3>
-              <p className="spec-card-desc">
-                Seamless connectors to third-party providers (payment gateways, billing systems, communication tools, and data analytics).
-              </p>
+            <div className="scenario-card">
+              <div>
+                <span className="scenario-tag">03 // INVENTORY & ORDER SYNC</span>
+                <h3 className="scenario-heading">Multi-Warehouse Inventory & Order Routing</h3>
+                <p className="scenario-desc">
+                  Custom inventory trackers that bridge your suppliers, warehouse systems, and sales channels.
+                  Automated re-order alerts and batch barcode scanner support built for fast fulfillment.
+                </p>
+              </div>
+              <div className="scenario-outcome">
+                <strong>Result:</strong> Zero stockouts, accurate inventory reporting, and rapid fulfillment.
+              </div>
             </div>
 
-            <div className="spec-card">
-              <span className="spec-card-num">04 // RELIABILITY</span>
-              <h3 className="spec-card-title">Cloud Infrastructure & Staging</h3>
-              <p className="spec-card-desc">
-                Automated continuous integration (CI/CD), staging verification environments, and automated disaster recovery backups.
-              </p>
+            <div className="scenario-card">
+              <div>
+                <span className="scenario-tag">04 // API BRIDGES & AUTOMATIONS</span>
+                <h3 className="scenario-heading">Automated Background Workflows & Reporting</h3>
+                <p className="scenario-desc">
+                  Reliable serverless backend microservices that generate branded PDF statements, synchronize customer records
+                  between legacy ERPs and Stripe, and dispatch automated notification webhooks.
+                </p>
+              </div>
+              <div className="scenario-outcome">
+                <strong>Result:</strong> 10+ hours saved every week on manual data reconciliation.
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Process & International Delivery */}
+      {/* Delivery Process */}
       <section className="service-content-section">
         <div className="container">
           <div className="service-section-header">
-            <span className="service-section-eyebrow">Development Framework</span>
-            <h2 className="service-section-title">Agile Delivery for Distributed Teams</h2>
+            <span className="service-section-eyebrow">Development Methodology</span>
+            <h2 className="service-section-title">Sprint-Based Delivery with Zero Guesswork</h2>
             <p className="service-section-subtext">
-              We collaborate with international founders and technical managers using structured milestone sprints.
+              We work in focused 2-week development sprints with live clickable demos at every milestone.
             </p>
           </div>
 
           <div className="process-grid">
             <div className="process-step-card">
               <span className="process-step-num">01</span>
-              <h3 className="process-step-title">Requirements Discovery</h3>
+              <h3 className="process-step-title">Data Architecture</h3>
               <p className="process-step-desc">
-                Mapping exact user personas, database schemas, authorization flows, and workflow diagrams before technical implementation.
+                We map your entities, relationships, authentication rules, and external API inputs before writing a single line of UI code.
               </p>
             </div>
 
             <div className="process-step-card">
               <span className="process-step-num">02</span>
-              <h3 className="process-step-title">Architecture & Prototype</h3>
+              <h3 className="process-step-title">Clickable Core MVP</h3>
               <p className="process-step-desc">
-                Interactive wireframes and database modeling to validate operational efficiency before full-stack engineering begins.
+                Within 10–14 days, you test an interactive staging build with real database operations, user authentication, and data entry.
               </p>
             </div>
 
             <div className="process-step-card">
               <span className="process-step-num">03</span>
-              <h3 className="process-step-title">Iterative Sprints</h3>
+              <h3 className="process-step-title">Integrations & Testing</h3>
               <p className="process-step-desc">
-                Modular two-week development cycles accompanied by recorded Loom demonstrations, live staging links, and code reviews.
+                We wire third-party webhooks, build automated report generation, and run stress tests with edge-case validation.
               </p>
             </div>
 
             <div className="process-step-card">
               <span className="process-step-num">04</span>
-              <h3 className="process-step-title">Production Handover</h3>
+              <h3 className="process-step-title">Production Handoff</h3>
               <p className="process-step-desc">
-                Comprehensive security checks, deployment pipeline setup, database migration verification, and team documentation handover.
+                Deployed to secure cloud infrastructure (AWS or Vercel + Supabase) with complete Git repository transfer and training documentation.
               </p>
             </div>
           </div>
 
-          {/* Pricing Disclaimer Box */}
           <div className="pricing-note-box">
-            <strong>Transparent Pricing Notice:</strong> Project pricing depends on scope, design complexity, integrations, functionality, and delivery requirements. Contact us for a tailored estimate. Note that cloud hosting, third-party APIs, and ongoing maintenance involve separate infrastructure fees.
+            <strong>Fixed-Scope Milestones:</strong> We don't bill endless agency hourly rates. You get an exact milestone roadmap with agreed-upon deliverables and fixed pricing before kickoff.
           </div>
         </div>
       </section>
 
-      {/* Relevant Concept Showcase */}
+      {/* Relevant Project Showcase */}
       <section className="service-content-section">
         <div className="container">
           <div className="service-section-header">
-            <span className="service-section-eyebrow">Software Prototype</span>
-            <h2 className="service-section-title">Concept Showcase: Nexus Core Analytics</h2>
+            <span className="service-section-eyebrow">Architecture Demo</span>
+            <h2 className="service-section-title">Concept Showcase: Nexus Core</h2>
           </div>
 
           <div className="case-study-callout">
             <div className="case-study-callout-img-wrap">
               <img
                 src="/images/projects/nexus-core.jpg"
-                alt="Nexus Core Analytics concept showcase"
+                alt="Nexus Core enterprise dashboard showcase"
                 className="case-study-callout-img"
                 loading="lazy"
               />
             </div>
             <div className="case-study-callout-body">
-              <span className="case-study-concept-badge">Concept Exploration // Enterprise Dashboard Architecture</span>
-              <h3 className="case-study-callout-title">Nexus Core Enterprise Analytics</h3>
+              <span className="case-study-concept-badge">Concept Exploration // Enterprise Operations Dashboard</span>
+              <h3 className="case-study-callout-title">Nexus Core Systems Platform</h3>
               <p className="case-study-callout-desc">
-                A modular data visualization dashboard engineered for multi-department metrics, high-density reporting,
-                and sub-second client-side interaction speed.
+                A high-density operational portal featuring real-time data filtering, role-based permission tiers,
+                and interactive system metrics designed for complex enterprise workflows.
               </p>
               <Button
                 to={ROUTES.WORK_DETAIL.replace(':id', 'nexus-core')}
@@ -320,7 +348,7 @@ export const CustomSoftwarePage: React.FC = () => {
             <span className="service-section-eyebrow">Direct Answers</span>
             <h2 className="service-section-title">Frequently Asked Questions</h2>
             <p className="service-section-subtext">
-              Direct, factual answers for decision-makers evaluating custom software development.
+              Straightforward answers about intellectual property, maintenance, and hosting.
             </p>
           </div>
 
@@ -343,7 +371,7 @@ export const CustomSoftwarePage: React.FC = () => {
       <section className="service-content-section">
         <div className="container">
           <div className="service-section-header">
-            <span className="service-section-eyebrow">Complementary Capabilities</span>
+            <span className="service-section-eyebrow">Explore Other Disciplines</span>
             <h2 className="service-section-title">Explore Related Solutions</h2>
           </div>
 
@@ -354,7 +382,7 @@ export const CustomSoftwarePage: React.FC = () => {
                 Website Development <ArrowUpRight size={16} />
               </div>
               <p className="related-service-desc">
-                Bespoke marketing websites, creative studio presences, and corporate flagship sites.
+                Custom marketing websites, creative portfolio presences, and corporate flagship sites.
               </p>
             </Link>
 
@@ -364,17 +392,17 @@ export const CustomSoftwarePage: React.FC = () => {
                 E-commerce Solutions <ArrowUpRight size={16} />
               </div>
               <p className="related-service-desc">
-                High-converting digital storefronts, product catalogues, and checkout workflows.
+                High-converting digital storefronts, customized checkouts, and Shopify integrations.
               </p>
             </Link>
 
             <Link to={ROUTES.SERVICES_AI} className="related-service-card">
-              <span className="related-service-num">04 // INTELLIGENCE</span>
+              <span className="related-service-num">04 // AI</span>
               <div className="related-service-title">
-                AI Solutions <ArrowUpRight size={16} />
+                AI Solutions & Automation <ArrowUpRight size={16} />
               </div>
               <p className="related-service-desc">
-                Practical workflow automation pipelines and knowledge-grounded AI features.
+                Grounded document search assistants, lead qualification bots, and workflow pipelines.
               </p>
             </Link>
           </div>
