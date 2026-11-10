@@ -537,16 +537,16 @@ export const TEAM_MEMBERS: TeamMember[] = [
     number: '02',
     name: 'MS. MAYURI KUMARI',
     role: 'UI/UX Designer',
-    image: '/images/team/mayuri-placeholder.svg',
-    alt: 'Portrait placeholder for Ms. Mayuri Kumari — UI/UX Designer at Vyrobytex',
+    image: '/images/team/mayuri-kumari.jpg',
+    alt: 'Portrait of Ms. Mayuri Kumari — UI/UX Designer at Vyrobytex',
   },
   {
     id: 'brijesh-chaudhary',
     number: '03',
     name: 'BRIJESH CHAUDHARY',
     role: 'Team Member',
-    image: '/images/team/brijesh-placeholder.svg',
-    alt: 'Temporary portrait placeholder for Brijesh Chaudhary',
+    image: '/images/team/brijesh-chaudhary.jpg',
+    alt: 'Portrait of Brijesh Chaudhary — Team Member at Vyrobytex',
   },
   {
     id: 'man-chaudhari',
@@ -562,8 +562,8 @@ export const TEAM_MEMBERS: TeamMember[] = [
     number: '05',
     name: 'DIXIT PATEL',
     role: 'Sales & Customer Management',
-    image: '/images/team/dixit-placeholder.svg',
-    alt: 'Temporary portrait placeholder for Dixit Patel',
+    image: '/images/team/dixit-patel.jpg',
+    alt: 'Portrait of Dixit Patel — Sales & Customer Management at Vyrobytex',
   },
 ];
 
