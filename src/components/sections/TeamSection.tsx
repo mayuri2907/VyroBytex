@@ -6,6 +6,24 @@ import { useCursor } from '../../hooks/useCursor';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import './TeamSection.css';
 
+const InstagramIcon: React.FC<{ size?: number }> = ({ size = 14 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+  </svg>
+);
+
 export interface TeamSectionProps {
   variant?: 'full' | 'compact';
   id?: string;
@@ -42,12 +60,14 @@ export const TeamSection: React.FC<TeamSectionProps> = ({
           />
         </div>
 
-        {/* Team Grid with 4 Members in Exact Sequence */}
+        {/* Team Grid with 5 Members in Exact Sequence */}
         <div className="team-grid" data-gsap-stagger="team-card">
           {TEAM_MEMBERS.map((member) => {
             const hasError = imageErrors[member.id];
-            const initials = member.name
+            const cleanedName = member.name.replace(/\b(ms|mr|mrs|dr)\.?\s+/gi, '');
+            const initials = cleanedName
               .split(' ')
+              .filter(Boolean)
               .map((w) => w[0])
               .join('');
 
@@ -90,20 +110,40 @@ export const TeamSection: React.FC<TeamSectionProps> = ({
                   <h3 className="team-member-name">{member.name}</h3>
                   <p className="team-member-role">{member.role}</p>
 
-                  {member.portfolioUrl && (
-                    <a
-                      href={member.portfolioUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="team-portfolio-btn"
-                      aria-label={`View ${member.name}'s portfolio (opens in a new tab)`}
-                      onClick={(e) => e.stopPropagation()}
-                      onMouseEnter={() => setCursorMode('pointer')}
-                      onMouseLeave={resetCursor}
-                    >
-                      <span>View Portfolio</span>
-                      <ArrowUpRight size={14} aria-hidden="true" />
-                    </a>
+                  {(member.portfolioUrl || member.instagramUrl) && (
+                    <div className="team-actions-row">
+                      {member.portfolioUrl && (
+                        <a
+                          href={member.portfolioUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="team-portfolio-btn"
+                          aria-label={`View ${member.name}'s portfolio (opens in a new tab)`}
+                          onClick={(e) => e.stopPropagation()}
+                          onMouseEnter={() => setCursorMode('pointer')}
+                          onMouseLeave={resetCursor}
+                        >
+                          <span>Portfolio</span>
+                          <ArrowUpRight size={13} aria-hidden="true" />
+                        </a>
+                      )}
+
+                      {member.instagramUrl && (
+                        <a
+                          href={member.instagramUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="team-portfolio-btn team-instagram-btn"
+                          aria-label={`Visit ${member.name}'s Instagram (opens in a new tab)`}
+                          onClick={(e) => e.stopPropagation()}
+                          onMouseEnter={() => setCursorMode('pointer')}
+                          onMouseLeave={resetCursor}
+                        >
+                          <InstagramIcon size={13} />
+                          <span>Instagram</span>
+                        </a>
+                      )}
+                    </div>
                   )}
                 </div>
               </article>

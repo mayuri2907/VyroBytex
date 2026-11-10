@@ -148,7 +148,7 @@ export const Footer: React.FC = () => {
                   onMouseLeave={resetCursor}
                   aria-label="Visit our Instagram profile"
                 >
-                  Instagram (@astralxxixnax)
+                  Instagram (@vyrobytex)
                 </a>
               </li>
               <li>

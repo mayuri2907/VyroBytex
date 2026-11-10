@@ -62,5 +62,6 @@ export interface TeamMember {
   alt: string;
   isFounder?: boolean;
   portfolioUrl?: string;
+  instagramUrl?: string;
 }
 

@@ -52,10 +52,14 @@ export function buildOrganizationSchema() {
     founder: {
       '@type': 'Person',
       name: 'Navin Chaudhary',
-      jobTitle: 'Founder',
+      jobTitle: 'Founder & Full Stack Developer',
+      sameAs: [
+        'https://mnax-ochre.vercel.app/',
+        'https://www.instagram.com/astralxxixnax?vrfl=cXplb2RjcXN3NGVr',
+      ],
     },
     sameAs: [
-      'https://www.instagram.com/astralxxixnax?vrfl=cXplb2RjcXN3NGVr',
+      'https://www.instagram.com/vyrobytex',
       'https://wa.me/918155952384',
       'https://github.com/mayuri2907/VyroBytex',
     ],

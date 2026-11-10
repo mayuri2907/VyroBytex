@@ -253,7 +253,7 @@ export const ContactPage: React.FC = () => {
                     Instagram Profile
                   </div>
                   <div style={{ fontSize: '1.0625rem', fontWeight: 700, color: 'var(--text-primary)' }}>
-                    @astralxxixnax
+                    @vyrobytex
                   </div>
                   <div style={{ fontSize: '0.75rem', color: 'var(--color-burnt-orange)', marginTop: '0.125rem', fontWeight: 600 }}>
                     Connect & view creative updates
